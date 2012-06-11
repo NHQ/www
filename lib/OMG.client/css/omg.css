@@ -1,0 +1,135 @@
+@font-face {
+  font-family: omglyphs;
+  src: url("fonts/omglyphs/glyphs-omglyphs.ttf");
+}
+body {
+  width: 100%;
+}
+body {
+  height: 100%;
+}
+body {
+  margin: 0px;
+}
+body {
+  padding: 0px;
+}
+body {
+  background: #333;
+}
+body {
+  overflow: hidden;
+}
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#terminal {
+  width: 78.5%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: 0;
+}
+#terminal left: 0 {
+  border: 5px solid #333;
+  box-shadow: inset 0 0 8px #000;
+  background: #fff;
+  background-image: -webkit-radial-gradient(50% 50%, rgba(248,249,243,0.75), rgba(93,93,93,0.60));
+  -webkit-border-radius: 30px;
+  overflow: hidden;
+}
+#options {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  border: 5px solid #333;
+  box-shadow: -3px 0 3px #333, inset 0 0 8px #000;
+  background-image: -webkit-linear-gradient(left, rgba(93,93,93,0.60), rgba(223,225,216,0.60), rgba(93,93,93,0.60));
+  -webkit-border-radius: 30px;
+  overflow: hidden;
+}
+.icon {
+  width: 176px;
+  height: 176px;
+  -webkit-border-radius: 88px;
+  background: #fff;
+  margin: 31px 50px;
+  display: block;
+  -webkit-box-shadow: inset 0px 4px 6px rgba(0,0,0,0.50);
+  z-index: 2;
+}
+.icon:hover {
+  cursor: pointer;
+}
+.gloss {
+  height: 100%;
+  -webkit-border-top-right-radius: 88px;
+  -webkit-border-top-left-radius: 30px;
+  -webkit-border-bottom-right-radius: 120px 20px;
+  -webkit-border-bottom-left-radius: 100px 20px;
+  -webkit-border-radius: 88px;
+  background: -webkit-gradient(linear, 100% 100%, 100% 50%, from(#fff), to(rgba(255,255,255,0.00)));
+  -webkit-box-shadow: 0px 2px 1px #fff;
+}
+.gloss:hover {
+  cursor: pointer;
+}
+.frontisIcon {
+  margin: 31px 0 0 31px;
+  padding: 0;
+  border: 7.5px solid transparent;
+  color: #008000;
+  float: left;
+}
+.frontisIcon:hover {
+  cursor: pointer;
+}
+.publish {
+  background: -webkit-radial-gradient(50% 50%, rgba(248,249,243,0.75) 11%, rgba(93,93,93,0.60)), -webkit-gradient(linear, 0% 0%, 0% 120%, from(#f00), to(#d21419));
+}
+.publish:hover {
+  background: -webkit-radial-gradient(50% 50%, rgba(250,253,240,0.75) 11%, rgba(178,200,89,0.60)), -webkit-gradient(linear, 0% 0%, 0% 120%, from(#f00), to(#d21419));
+  cursor: pointer;
+}
+.channel {
+  background: -webkit-radial-gradient(50% 50%, rgba(248,249,243,0.75) 11%, rgba(93,93,93,0.60)), -webkit-gradient(linear, 0% 0%, 0% 120%, from(#f00), to(#d21419));
+}
+.channel:hover {
+  background: -webkit-radial-gradient(50% 50%, rgba(250,253,240,0.75) 11%, rgba(178,200,89,0.60)), -webkit-gradient(linear, 0% 0%, 0% 120%, from(#f00), to(#d21419));
+  cursor: pointer;
+}
+.draftsman {
+  background: -webkit-radial-gradient(50% 50%, rgba(248,249,243,0.75) 11%, rgba(93,93,93,0.60)), -webkit-gradient(linear, 0% 0%, 0% 120%, from(#f00), to(#d21419));
+}
+.draftsman:hover {
+  background: -webkit-radial-gradient(50% 50%, rgba(250,253,240,0.75) 11%, rgba(178,200,89,0.60)), -webkit-gradient(linear, 0% 0%, 0% 120%, from(#f00), to(#d21419));
+  cursor: pointer;
+}
+.fudge {
+  margin-left: -10px;
+}
+.profile {
+  background: -webkit-radial-gradient(50% 50%, rgba(248,249,243,0.75) 11%, rgba(93,93,93,0.60)), -webkit-gradient(linear, 0% 0%, 0% 120%, from(#f00), to(#d21419));
+}
+.profile:hover {
+  background: -webkit-radial-gradient(50% 50%, rgba(250,253,240,0.75) 11%, rgba(178,200,89,0.60)), -webkit-gradient(linear, 0% 0%, 0% 120%, from(#f00), to(#d21419));
+  cursor: pointer;
+}
+[data-auth=false] {
+  background: -webkit-radial-gradient(50% 50%, rgba(248,249,243,0.75) 11%, rgba(93,93,93,0.60)), -webkit-gradient(linear, 0% 0%, 0% 120%, from(#0f0), to(#19d214));
+}
+[data-auth=false]:hover {
+  background: -webkit-radial-gradient(50% 50%, rgba(250,253,240,0.75) 11%, rgba(178,200,89,0.60)), -webkit-gradient(linear, 0% 0%, 0% 120%, from(#0f0), to(#19d214));
+}
+#showOptions {
+  position: fixed;
+  top: 30px;
+  right: 70px;
+  font-size: 50px;
+  color: #533;
+}

@@ -1,0 +1,26 @@
+div(id='stage')
+div(class='toolSet', id='toolSet')
+  ul(class='menuList', id='metaMenu') 
+    h1 META
+    br
+    for x in meta
+      li(class='layoutSelector')
+        h1(class='setLayout', data-event='click', data-type=x)= x
+  ul(class='menuList', id='layoutMenu') 
+    h1 LAYOUT
+    br
+    for x in layouts
+      li(class='layoutSelector')
+        h1(class='setLayout', data-event='click', data-type=x)= x
+  ul(class='menuList', id='templatesMenu') 
+    h1 Elements
+    br
+    for x in elemenos
+      li(class='templateSelector')
+        h1(class='createHTMLelem', data-event='click', data-type=x)= x
+  ul(class='menuList', id='templatesMenu') 
+    h1 Templates
+    br
+    for x in templates
+      li(class='templateSelector')
+        h1(class='createHTMLelem', data-event='click', data-type=x)= x

@@ -1,0 +1,134 @@
+@font-face
+  font-family omglyphs
+  src url(fonts/omglyphs/glyphs-omglyphs.ttf)
+
+body
+  width: 100%
+
+body
+  height: 100%
+
+body
+  margin: 0px
+
+body
+	padding: 0px
+
+body
+  background: #333
+
+body
+  overflow: hidden
+
+*
+  -moz-box-sizing: border-box
+  -webkit-box-sizing: border-box
+  box-sizing: border-box
+
+#terminal
+	width: 78.5%
+	height: 100%
+	padding: 0
+	margin: 0
+	position: absolute
+	top: 0
+	left: 0
+  border: 5px solid #333
+  box-shadow: inset 0 0 8px #000
+  background:#fff
+  background-image: -webkit-radial-gradient(50% 50%, hsla(72, 33, 96.6, .75), hsla(72, 0, 36.6, .6))
+  -webkit-border-radius: 30px
+  overflow: hidden
+
+#options
+  height: 100%
+  position: absolute
+  top: 0
+  right: 0
+  z-index: 1
+  border: 5px solid #333
+  box-shadow:-3px 0 3px #333, inset 0 0 8px #000
+  background-image: -webkit-linear-gradient(left,hsla(72, 0, 36.6, .6), hsla(72, 13, 86.6, .6), hsla(72, 0, 36.6, .6))
+  -webkit-border-radius: 30px
+  overflow: hidden
+
+.icon
+  width: 176px;
+  height: 176px;
+  -webkit-border-radius: 88px;
+  background: #fff;
+  margin: 31px 50px;
+  display:block
+  -webkit-box-shadow: inset 0px 4px 6px rgba(0, 0, 0, 0.5);
+  z-index: 2
+
+.icon:hover
+  cursor: pointer
+
+.gloss
+  height: 100%;
+  -webkit-border-top-right-radius: 88px;
+  -webkit-border-top-left-radius: 30px;
+  -webkit-border-bottom-right-radius: 120px 20px;
+  -webkit-border-bottom-left-radius: 100px 20px;
+  -webkit-border-radius: 88px;
+  background: -webkit-gradient(linear, 100% 100%, 100% 50%, from(hsla(1,100,100,1)), to(hsla(1,100,100,0)));	
+  -webkit-box-shadow: 0px 2px 1px #fff  
+
+.gloss:hover
+  cursor: pointer
+
+.frontisIcon
+  margin: 31px 0 0 31px
+  padding: 0
+  border: 7.5px solid transparent
+  color: green
+  float:left
+
+.frontisIcon:hover
+  cursor:pointer
+
+.publish
+  background: -webkit-radial-gradient(50% 50%, hsla(72, 33, 96.6, .75) 11%, hsla(72, 0, 36.6, .6)), -webkit-gradient(linear, 0% 0%, 0% 120%, from(rgba(255,0,0,1)), to(rgba(210, 20, 25, 1)))
+
+.publish:hover
+  background: -webkit-radial-gradient(50% 50%, hsla(72, 73, 96.6, .75) 11%, hsla(72, 50, 56.6, .6)), -webkit-gradient(linear, 0% 0%, 0% 120%, from(rgba(255,0,0,1)), to(rgba(210, 20, 25, 1)))  
+  cursor: pointer
+
+.channel
+  background: -webkit-radial-gradient(50% 50%, hsla(72, 33, 96.6, .75) 11%, hsla(72, 0, 36.6, .6)), -webkit-gradient(linear, 0% 0%, 0% 120%, from(rgba(255,0,0,1)), to(rgba(210, 20, 25, 1)))
+
+.channel:hover
+  background: -webkit-radial-gradient(50% 50%, hsla(72, 73, 96.6, .75) 11%, hsla(72, 50, 56.6, .6)), -webkit-gradient(linear, 0% 0%, 0% 120%, from(rgba(255,0,0,1)), to(rgba(210, 20, 25, 1)))  
+  cursor: pointer  
+
+.draftsman
+  background: -webkit-radial-gradient(50% 50%, hsla(72, 33, 96.6, .75) 11%, hsla(72, 0, 36.6, .6)), -webkit-gradient(linear, 0% 0%, 0% 120%, from(rgba(255,0,0,1)), to(rgba(210, 20, 25, 1)))
+
+.draftsman:hover
+  background: -webkit-radial-gradient(50% 50%, hsla(72, 73, 96.6, .75) 11%, hsla(72, 50, 56.6, .6)), -webkit-gradient(linear, 0% 0%, 0% 120%, from(rgba(255,0,0,1)), to(rgba(210, 20, 25, 1)))  
+  cursor: pointer
+    
+.fudge
+  margin-left: -10px    
+
+.profile
+  background: -webkit-radial-gradient(50% 50%, hsla(72, 33, 96.6, .75) 11%, hsla(72, 0, 36.6, .6)), -webkit-gradient(linear, 0% 0%, 0% 120%, from(rgba(255,0,0,1)), to(rgba(210, 20, 25, 1)))
+
+.profile:hover
+  background: -webkit-radial-gradient(50% 50%, hsla(72, 73, 96.6, .75) 11%, hsla(72, 50, 56.6, .6)), -webkit-gradient(linear, 0% 0%, 0% 120%, from(rgba(255,0,0,1)), to(rgba(210, 20, 25, 1)))  
+  cursor: pointer
+
+[data-auth=false]
+  background: -webkit-radial-gradient(50% 50%, hsla(72, 33, 96.6, .75) 11%, hsla(72, 0, 36.6, .6)), -webkit-gradient(linear, 0% 0%, 0% 120%, from(rgba(0, 255, 0, 1)), to(rgba(25, 210, 20, 1)))
+
+[data-auth=false]:hover
+  background: -webkit-radial-gradient(50% 50%, hsla(72, 73, 96.6, .75) 11%, hsla(72, 50, 56.6, .6)), -webkit-gradient(linear, 0% 0%, 0% 120%, from(rgba(0, 255, 0, 1)), to(rgba(25, 210, 20, 1)))
+
+
+#showOptions
+  position: fixed
+  top: 30px
+  right: 70px
+  font-size:50px
+  color:#533

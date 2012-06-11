@@ -1,0 +1,237 @@
+body, div, h1, h2, h3, h4, a, img, ul, audio, video, blockquote, svg, canvas, textarea{
+  margin: 0;
+  padding: 0;
+	margin-before: 0;
+	margin-after: 0;
+	-webkit-margin-before: 0;
+	-webkit-margin-after: 0;
+	-webkit-padding-start: 0;
+	border-style:solid;
+	border-width:0;
+}
+
+p {
+	-webkit-margin-before: 0;
+	-webkit-margin-after: 0;
+}
+
+body {
+	font-family: Times;
+	width: 100%;
+	height: 100%;
+	font-size:62.5%;
+	color: hsla(210, 80%, 30%, 1);
+	background-color: #fff;
+	background-image: -webkit-radial-gradient(center, hsla(110,50%,50%,.65), hsla(110,80%,30%,1));
+}
+
+.curtain {
+	width: 100%;
+	height: 100%;
+	position:absolute;
+	left: 0;
+	top: 0;
+	background: #ddd;
+	z-index:3;
+	opacity:.33;
+}
+
+a{
+  text-decoration:none;
+  color: hsla(210, 80%, 50%, 1);
+}
+
+.stage{
+	position:absolute;
+	width: 100%;
+	height: 100%;
+	z-index: 0;
+}
+
+.toolSet {
+	position:absolute;
+  right:10px;
+  top:0px;
+	width: 400px;
+	height: 100%;
+	z-index: 1;
+  background: transparent;
+}
+.cssPrimitivesWrapper {
+	height:100%;
+	width: 100%;
+	overflow:auto;
+	font-size:1.67em;
+	font-family: Courier;
+	border:2px solid yellow;
+}
+.cssPrimitives{
+	margin: 0 1ex;
+	border-bottom: 1px dotted #333;
+}
+
+span.cssType {
+	font-size:1;
+	text-transform:uppercase;
+	color: #788;
+}
+span.cssProperty {
+	color: #333;
+}
+span.cssComputed {
+	color: #000;
+}
+span.cssPrimitiveVal, span.cssPrimitiveUnit {
+	color: rgb(0,20,199);
+}
+span.cssPrimitiveVal:hover {
+	cursor: move;
+}
+ul.menuList{
+	width:100%;
+	display:inline-block;
+	border: 1px solid #000;
+	list-style-type: none;
+	margin: 1ex
+}
+
+ul.menuList > li {
+	display:none;
+}
+
+ul.menuList:nth-child(4){
+	background:yellow;
+}
+
+ul.menuList:nth-child(4) > li{
+	opacity:1;
+	display:inline-block;
+}
+
+li.templateSelector, li.layoutSelector {
+	width:29%;
+	margin:7px;
+	border-radius: 5px;
+	border:2px solid pink;
+	background:#efe;
+	color:#333;
+	box-shadow:inset 0 0 3px #333;
+	display:inline-block;
+	list-style-type: none;
+	text-align: center
+	
+}
+li.templateSelector:hover, li.layoutSelector:hover {
+	background:#333;
+	color:orange;
+	box-shadow:inset 0 0 3px #efe;
+}
+
+li.templateSelector > h1, li.layoutSelector > h1, ul.menuList > h1 {
+	list-style-type: none	font-size:2.1em;
+	display:inline-inline;
+	padding:20px 0;
+	text-align: center;
+	
+}
+
+li.templateSelector > h1:hover, li.layoutSelector > h1:hover {
+	cursor:pointer
+}
+
+
+.ranger{
+  height:100px;
+  -webkit-appearance: slider-vertical;
+  -moz-appearance: slider-vertical;
+  zoom: 2;
+	position: absolute;
+	left:10px;
+	bottom: 10px;
+}
+
+.xyRangeCanvas {
+	position: absolute;
+	left: 230px;
+	bottom:10px;
+  background:#333;
+	border:3px solid pink;
+	cursor:crosshair;
+}
+
+#playgroundMediaUploader {
+	width:100%;
+	height:250px;
+	border: 3px solid brown;
+}
+.wrapper > img {
+	width:100%;
+	height:auto;
+}
+
+.wrapper {
+	position:absolute;
+	top:30px;
+	left: 360px;
+	width: 27%;
+	height: 22%;
+	padding:0px;
+	z-index: 1;
+}
+
+.wrapper:hover, wrapper:focus {
+	outline: 1px dashed hsla(205, 90%, 90%, 1);
+}
+
+.Handle {
+	visibility:hidden;
+	height:32px;
+	width:32px;
+	position:absolute;
+	background-size: 512px 480px
+}
+
+.dragHandle {
+	background-position: 0px -160px; 
+}
+.rotateHandle {
+	cursor: pointer;
+	background-position: -352px -128px; 
+}
+.handlePosTopRight {
+	top:0px;
+	right: -32px;
+}
+.handlePosTopLeft {
+	top:0px;
+	left: -32px;
+}
+
+.wrapper:hover > .Handle {
+	visibility:visible;
+}
+
+.Handle:hover {
+	visibility:visible;
+}
+
+.media {
+	width:100%;
+	height:100%;
+}
+.media:not(button, input, textarea) {
+	height:100%;
+}
+
+textarea.media {
+	font-size:2em;
+	width:100%;
+	height:100%;
+}
+
+.hovered > * {
+	visibility:visible;
+}
+.selected {
+	border: 1px dashed hsla(205, 90%, 90%, 1);
+}

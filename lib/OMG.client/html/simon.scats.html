@@ -1,0 +1,864 @@
+<!doctype html>
+<head>
+  <title>Simon Scats</title>
+  <meta name="google" value="notranslate">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<style id='styles'>
+	body, div, h1, h2, h3, h4, a, img, audio, video, blockquote, svg, canvas{
+	  margin: 0;
+	  padding: 0;
+	}
+	html, body {height: 100%;}
+	body {
+		font-family: Times;
+		width: 100%;
+		font-size:62.5%;
+		color: hsla(210, 80%, 30%, 1);
+		background-image: -webkit-radial-gradient(60% 60%,#aaa, #333);
+		background-image: -moz-linear-gradient(right, #aaa 40%, #333 100%);
+		display: box; display: flexbox;
+    	box-align: center; flex-align: center;
+    	box-pack: center; flex-pack: center;
+    overflow:hidden;
+	}
+	p {
+	  color: hotpink;
+	  font-size:150%;
+	  padding:  0 2ex 0 0;
+	  text-shadow: 1px 1px 0 #333;
+	  
+	}
+	a{
+	  text-decoration:none;
+	  color: hsla(210, 80%, 50%, 1);
+	}
+	
+	.game {
+		visibility:hidden;
+		
+	  position:fixed;
+	  left:8%;
+	  top:10%;
+		width:67%;
+		height:75%;
+	}
+	.panel {
+	  position:fixed;
+	  top:10%;
+	  width:25%;
+	  height:50%;
+	  right:-10px;
+	}
+	.pad {
+		width:33%;
+		height:33%;
+		background:#eee;
+		float:left;
+	}
+	.button {
+	  opacity:.5;
+		width:100%;
+		height:100%;
+		border:2px solid black;
+	}
+	
+	.button:hover {
+		cursor:pointer;
+	}
+
+	.glowing {
+	  opacity:1;
+	  box-shadow: inset 0 0 7px #333;
+	}
+	.startBtn {
+	}
+	.hide {
+	  display:none;
+	}
+	h1 {
+	  color:hotpink;
+	  text-shadow: 1px 1px 0 #333;
+	}
+	.title {
+	  color:rgb(245, 30, 245);
+	}
+	.loading {
+		top:30%;
+		margin-left:20%;
+		font-size:66px;
+		text-decoration:blink;
+	}
+	.newGame {
+	  font-size:70px;
+	  position:absolute;
+	  top:0;
+	  left:67px;
+	  z-index:2;
+	}
+	</style>
+</head>
+<body>
+  <audio class='hide' id='burp' src='audio/burp_x.wav' controls='false'></audio>
+  <h1 class='loading' id='loading'>loading <span id='num'>9</span> sample(s)</h1>
+	<div class='game' id='game'>
+	  <span class='newGame hide' id='newGame'><h1>NEW GAME</h1></span>
+	</div>
+	<div class='panel'>
+	  <h1 class='title'>SIMON SCATS</h1>
+	 <h1 id='score'>Score: 0</h1>
+   	<br />
+   	<button class='startBtn' id='startBtn'>start</button>
+   	<p>
+   	  Featuring Ella Fitzgerald.
+   	</p>
+   	<p>
+   	  To play it like a sampler, *don't press start*<br />
+			Press start to test your memory against Simon Scats!<br />
+   	</p>
+		<p>
+			Sorry abt the .wavs Chrome
+		</p>
+		<p>
+			For Angeline
+		</p>
+	</div>
+</body>
+<script type='text/javascript'> //EventEmitter2 by https://github.com/hij1nx/EventEmitter2	
+	;!function(exports, undefined) {
+
+	  var isArray = Array.isArray ? Array.isArray : function _isArray(obj) {
+	    return Object.prototype.toString.call(obj) === "[object Array]";
+	  };
+	  var defaultMaxListeners = 10;
+
+	  function init() {
+	    this._events = new Object;
+	  }
+
+	  function configure(conf) {
+	    if (conf) {
+	      conf.delimiter && (this.delimiter = conf.delimiter);
+	      conf.wildcard && (this.wildcard = conf.wildcard);
+	      if (this.wildcard) {
+	        this.listenerTree = new Object;
+	      }
+	    }
+	  }
+
+	  function EventEmitter(conf) {
+	    this._events = new Object;
+	    configure.call(this, conf);
+	  }
+
+	  //
+	  // Attention, function return type now is array, always !
+	  // It has zero elements if no any matches found and one or more
+	  // elements (leafs) if there are matches
+	  //
+	  function searchListenerTree(handlers, type, tree, i) {
+	    if (!tree) {
+	      return [];
+	    }
+	    var listeners=[], leaf, len, branch, xTree, xxTree, isolatedBranch, endReached,
+	        typeLength = type.length, currentType = type[i], nextType = type[i+1];
+	    if (i === typeLength && tree._listeners) {
+	      //
+	      // If at the end of the event(s) list and the tree has listeners
+	      // invoke those listeners.
+	      //
+	      if (typeof tree._listeners === 'function') {
+	        handlers && handlers.push(tree._listeners);
+	        return [tree];
+	      } else {
+	        for (leaf = 0, len = tree._listeners.length; leaf < len; leaf++) {
+	          handlers && handlers.push(tree._listeners[leaf]);
+	        }
+	        return [tree];
+	      }
+	    }
+
+	    if ((currentType === '*' || currentType === '**') || tree[currentType]) {
+	      //
+	      // If the event emitted is '*' at this part
+	      // or there is a concrete match at this patch
+	      //
+	      if (currentType === '*') {
+	        for (branch in tree) {
+	          if (branch !== '_listeners' && tree.hasOwnProperty(branch)) {
+	            listeners = listeners.concat(searchListenerTree(handlers, type, tree[branch], i+1));
+	          }
+	        }
+	        return listeners;
+	      } else if(currentType === '**') {
+	        endReached = (i+1 === typeLength || (i+2 === typeLength && nextType === '*'));
+	        if(endReached && tree._listeners) {
+	          // The next element has a _listeners, add it to the handlers.
+	          listeners = listeners.concat(searchListenerTree(handlers, type, tree, typeLength));
+	        }
+
+	        for (branch in tree) {
+	          if (branch !== '_listeners' && tree.hasOwnProperty(branch)) {
+	            if(branch === '*' || branch === '**') {
+	              if(tree[branch]._listeners && !endReached) {
+	                listeners = listeners.concat(searchListenerTree(handlers, type, tree[branch], typeLength));
+	              }
+	              listeners = listeners.concat(searchListenerTree(handlers, type, tree[branch], i));
+	            } else if(branch === nextType) {
+	              listeners = listeners.concat(searchListenerTree(handlers, type, tree[branch], i+2));
+	            } else {
+	              // No match on this one, shift into the tree but not in the type array.
+	              listeners = listeners.concat(searchListenerTree(handlers, type, tree[branch], i));
+	            }
+	          }
+	        }
+	        return listeners;
+	      }
+
+	      listeners = listeners.concat(searchListenerTree(handlers, type, tree[currentType], i+1));
+	    }
+
+	    xTree = tree['*'];
+	    if (xTree) {
+	      //
+	      // If the listener tree will allow any match for this part,
+	      // then recursively explore all branches of the tree
+	      //
+	      searchListenerTree(handlers, type, xTree, i+1);
+	    }
+
+	    xxTree = tree['**'];
+	    if(xxTree) {
+	      if(i < typeLength) {
+	        if(xxTree._listeners) {
+	          // If we have a listener on a '**', it will catch all, so add its handler.
+	          searchListenerTree(handlers, type, xxTree, typeLength);
+	        }
+
+	        // Build arrays of matching next branches and others.
+	        for(branch in xxTree) {
+	          if(branch !== '_listeners' && xxTree.hasOwnProperty(branch)) {
+	            if(branch === nextType) {
+	              // We know the next element will match, so jump twice.
+	              searchListenerTree(handlers, type, xxTree[branch], i+2);
+	            } else if(branch === currentType) {
+	              // Current node matches, move into the tree.
+	              searchListenerTree(handlers, type, xxTree[branch], i+1);
+	            } else {
+	              isolatedBranch = {};
+	              isolatedBranch[branch] = xxTree[branch];
+	              searchListenerTree(handlers, type, { '**': isolatedBranch }, i+1);
+	            }
+	          }
+	        }
+	      } else if(xxTree._listeners) {
+	        // We have reached the end and still on a '**'
+	        searchListenerTree(handlers, type, xxTree, typeLength);
+	      } else if(xxTree['*'] && xxTree['*']._listeners) {
+	        searchListenerTree(handlers, type, xxTree['*'], typeLength);
+	      }
+	    }
+
+	    return listeners;
+	  }
+
+	  function growListenerTree(type, listener) {
+
+	    type = typeof type === 'string' ? type.split(this.delimiter) : type.slice();
+
+	    //
+	    // Looks for too consecutive '**', if so, don't add the event at all.
+	    //
+	    for(var i = 0, len = type.length; i+1 < len; i++) {
+	      if(type[i] === '**' && type[i+1] === '**') {
+	        return;
+	      }
+	    }
+
+	    var tree = this.listenerTree;
+	    var name = type.shift();
+
+	    while (name) {
+
+	      if (!tree[name]) {
+	        tree[name] = new Object;
+	      }
+
+	      tree = tree[name];
+
+	      if (type.length === 0) {
+
+	        if (!tree._listeners) {
+	          tree._listeners = listener;
+	        }
+	        else if(typeof tree._listeners === 'function') {
+	          tree._listeners = [tree._listeners, listener];
+	        }
+	        else if (isArray(tree._listeners)) {
+
+	          tree._listeners.push(listener);
+
+	          if (!tree._listeners.warned) {
+
+	            var m = this._events.maxListeners || defaultMaxListeners;
+
+	            if (m > 0 && tree._listeners.length > m) {
+
+	              tree._listeners.warned = true;
+	              console.error('(node) warning: possible EventEmitter memory ' +
+	                            'leak detected. %d listeners added. ' +
+	                            'Use emitter.setMaxListeners() to increase limit.',
+	                            tree._listeners.length);
+	              console.trace();
+	            }
+	          }
+	        }
+	        return true;
+	      }
+	      name = type.shift();
+	    }
+	    return true;
+	  };
+
+	  // By default EventEmitters will print a warning if more than
+	  // 10 listeners are added to it. This is a useful default which
+	  // helps finding memory leaks.
+	  //
+	  // Obviously not all Emitters should be limited to 10. This function allows
+	  // that to be increased. Set to zero for unlimited.
+
+	  EventEmitter.prototype.delimiter = '.';
+
+	  EventEmitter.prototype.setMaxListeners = function(n) {
+	    this._events || init.call(this);
+	    this._events.maxListeners = n;
+	  };
+
+	  EventEmitter.prototype.event = '';
+
+	  EventEmitter.prototype.once = function(event, fn) {
+	    this.many(event, 1, fn);
+	    return this;
+	  };
+
+	  EventEmitter.prototype.many = function(event, ttl, fn) {
+	    var self = this;
+
+	    if (typeof fn !== 'function') {
+	      throw new Error('many only accepts instances of Function');
+	    }
+
+	    function listener() {
+	      if (--ttl === 0) {
+	        self.off(event, listener);
+	      }
+	      fn.apply(this, arguments);
+	    };
+
+	    listener._origin = fn;
+
+	    this.on(event, listener);
+
+	    return self;
+	  };
+
+	  EventEmitter.prototype.emit = function() {
+	    this._events || init.call(this);
+
+	    var type = arguments[0];
+
+	    if (type === 'newListener') {
+	      if (!this._events.newListener) { return false; }
+	    }
+
+	    // Loop through the *_all* functions and invoke them.
+	    if (this._all) {
+	      var l = arguments.length;
+	      var args = new Array(l - 1);
+	      for (var i = 1; i < l; i++) args[i - 1] = arguments[i];
+	      for (i = 0, l = this._all.length; i < l; i++) {
+	        this.event = type;
+	        this._all[i].apply(this, args);
+	      }
+	    }
+
+	    // If there is no 'error' event listener then throw.
+	    if (type === 'error') {
+
+	      if (!this._all && 
+	        !this._events.error && 
+	        !(this.wildcard && this.listenerTree.error)) {
+
+	        if (arguments[1] instanceof Error) {
+	          throw arguments[1]; // Unhandled 'error' event
+	        } else {
+	          throw new Error("Uncaught, unspecified 'error' event.");
+	        }
+	        return false;
+	      }
+	    }
+
+	    var handler;
+
+	    if(this.wildcard) {
+	      handler = [];
+	      var ns = typeof type === 'string' ? type.split(this.delimiter) : type.slice();
+	      searchListenerTree.call(this, handler, ns, this.listenerTree, 0);
+	    }
+	    else {
+	      handler = this._events[type];
+	    }
+
+	    if (typeof handler === 'function') {
+	      this.event = type;
+	      if (arguments.length === 1) {
+	        handler.call(this);
+	      }
+	      else if (arguments.length > 1)
+	        switch (arguments.length) {
+	          case 2:
+	            handler.call(this, arguments[1]);
+	            break;
+	          case 3:
+	            handler.call(this, arguments[1], arguments[2]);
+	            break;
+	          // slower
+	          default:
+	            var l = arguments.length;
+	            var args = new Array(l - 1);
+	            for (var i = 1; i < l; i++) args[i - 1] = arguments[i];
+	            handler.apply(this, args);
+	        }
+	      return true;
+	    }
+	    else if (handler) {
+	      var l = arguments.length;
+	      var args = new Array(l - 1);
+	      for (var i = 1; i < l; i++) args[i - 1] = arguments[i];
+
+	      var listeners = handler.slice();
+	      for (var i = 0, l = listeners.length; i < l; i++) {
+	        this.event = type;
+	        listeners[i].apply(this, args);
+	      }
+	      return true;
+	    }
+
+	  };
+
+	  EventEmitter.prototype.revent = function(name, funcs) {
+			var name = name
+				,	funcs = funcs || []
+			;
+			return function (evt, ui){
+				var self = this;
+				omg.eve.emit(name, evt, ui)
+				funcs.forEach(function(fun){
+					fun.call(self, evt, ui)
+				})
+			}
+		};
+
+	  EventEmitter.prototype.remit = function(type) {
+			var type = type;
+			return function (e, r){
+				omg.eve.emit(type, e, r)
+			}
+		};
+
+	  EventEmitter.prototype.on = function(type, listener) {
+
+	    if (typeof type === 'function') {
+	      this.onAny(type);
+	      return this;
+	    }
+
+	    if (typeof listener !== 'function') {
+	      throw new Error('on only accepts instances of Function');
+	    }
+	    this._events || init.call(this);
+
+	    // To avoid recursion in the case that type == "newListeners"! Before
+	    // adding it to the listeners, first emit "newListeners".
+	    this.emit('newListener', type, listener);
+
+	    if(this.wildcard) {
+	      growListenerTree.call(this, type, listener);
+	      return this;
+	    }
+
+	    if (!this._events[type]) {
+	      // Optimize the case of one listener. Don't need the extra array object.
+	      this._events[type] = listener;
+	    }
+	    else if(typeof this._events[type] === 'function') {
+	      // Adding the second element, need to change to array.
+	      this._events[type] = [this._events[type], listener];
+	    }
+	    else if (isArray(this._events[type])) {
+	      // If we've already got an array, just append.
+	      this._events[type].push(listener);
+
+	      // Check for listener leak
+	      if (!this._events[type].warned) {
+
+	        var m;
+	        if (this._events.maxListeners !== undefined) {
+	          m = this._events.maxListeners;
+	        } else {
+	          m = defaultMaxListeners;
+	        }
+
+	        if (m && m > 0 && this._events[type].length > m) {
+
+	          this._events[type].warned = true;
+	          console.error('(node) warning: possible EventEmitter memory ' +
+	                        'leak detected. %d listeners added. ' +
+	                        'Use emitter.setMaxListeners() to increase limit.',
+	                        this._events[type].length);
+	          console.trace();
+	        }
+	      }
+	    }
+	    return this;
+	  };
+
+	  EventEmitter.prototype.onAny = function(fn) {
+
+	    if(!this._all) {
+	      this._all = [];
+	    }
+
+	    if (typeof fn !== 'function') {
+	      throw new Error('onAny only accepts instances of Function');
+	    }
+
+	    // Add the function to the event listener collection.
+	    this._all.push(fn);
+	    return this;
+	  };
+
+	  EventEmitter.prototype.addListener = EventEmitter.prototype.on;
+
+	  EventEmitter.prototype.off = function(type, listener) {
+	    if (typeof listener !== 'function') {
+	      throw new Error('removeListener only takes instances of Function');
+	    }
+
+	    var handlers,leafs=[];
+
+	    if(this.wildcard) {
+	      var ns = typeof type === 'string' ? type.split(this.delimiter) : type.slice();
+	      leafs = searchListenerTree.call(this, null, ns, this.listenerTree, 0);
+	    }
+	    else {
+	      // does not use listeners(), so no side effect of creating _events[type]
+	      if (!this._events[type]) return this;
+	      handlers = this._events[type];
+	      leafs.push({_listeners:handlers});
+	    }
+
+	    for (var iLeaf=0; iLeaf<leafs.length; iLeaf++) {
+	      var leaf = leafs[iLeaf];
+	      handlers = leaf._listeners;
+	      if (isArray(handlers)) {
+
+	        var position = -1;
+
+	        for (var i = 0, length = handlers.length; i < length; i++) {
+	          if (handlers[i] === listener ||
+	            (handlers[i].listener && handlers[i].listener === listener) ||
+	            (handlers[i]._origin && handlers[i]._origin === listener)) {
+	            position = i;
+	            break;
+	          }
+	        }
+
+	        if (position < 0) {
+	          return this;
+	        }
+
+	        if(this.wildcard) {
+	          leaf._listeners.splice(position, 1)
+	        }
+	        else {
+	          this._events[type].splice(position, 1);
+	        }
+
+	        if (handlers.length === 0) {
+	          if(this.wildcard) {
+	            delete leaf._listeners;
+	          }
+	          else {
+	            delete this._events[type];
+	          }
+	        }
+	      }
+	      else if (handlers === listener ||
+	        (handlers.listener && handlers.listener === listener) ||
+	        (handlers._origin && handlers._origin === listener)) {
+	        if(this.wildcard) {
+	          delete leaf._listeners;
+	        }
+	        else {
+	          delete this._events[type];
+	        }
+	      }
+	    }
+
+	    return this;
+	  };
+
+	  EventEmitter.prototype.offAny = function(fn) {
+	    var i = 0, l = 0, fns;
+	    if (fn && this._all && this._all.length > 0) {
+	      fns = this._all;
+	      for(i = 0, l = fns.length; i < l; i++) {
+	        if(fn === fns[i]) {
+	          fns.splice(i, 1);
+	          return this;
+	        }
+	      }
+	    } else {
+	      this._all = [];
+	    }
+	    return this;
+	  };
+
+	  EventEmitter.prototype.removeListener = EventEmitter.prototype.off;
+
+	  EventEmitter.prototype.removeAllListeners = function(type) {
+	    if (arguments.length === 0) {
+	      !this._events || init.call(this);
+	      return this;
+	    }
+
+	    if(this.wildcard) {
+	      var ns = typeof type === 'string' ? type.split(this.delimiter) : type.slice();
+	      var leafs = searchListenerTree.call(this, null, ns, this.listenerTree, 0);
+
+	      for (var iLeaf=0; iLeaf<leafs.length; iLeaf++) {
+	        var leaf = leafs[iLeaf];
+	        leaf._listeners = null;
+	      }
+	    }
+	    else {
+	      if (!this._events[type]) return this;
+	      this._events[type] = null;
+	    }
+	    return this;
+	  };
+
+	  EventEmitter.prototype.listeners = function(type) {
+	    if(this.wildcard) {
+	      var handlers = [];
+	      var ns = typeof type === 'string' ? type.split(this.delimiter) : type.slice();
+	      searchListenerTree.call(this, handlers, ns, this.listenerTree, 0);
+	      return handlers;
+	    }
+
+	    this._events || init.call(this);
+
+	    if (!this._events[type]) this._events[type] = [];
+	    if (!isArray(this._events[type])) {
+	      this._events[type] = [this._events[type]];
+	    }
+	    return this._events[type];
+	  };
+
+	  EventEmitter.prototype.listenersAny = function() {
+
+	    if(this._all) {
+	      return this._all;
+	    }
+	    else {
+	      return [];
+	    }
+
+	  };
+
+	  if (typeof define === 'function' && define.amd) {
+	    define(function() {
+	      return EventEmitter;
+	    });
+	  } else {
+	    exports.EventEmitter2 = EventEmitter; 
+	  }
+
+	}(typeof process !== 'undefined' && process.title ? exports : window);
+	
+</script>
+<script type='text/javascript'>
+	var steps = [], moves = [], clock = 10000, points = 0
+		,	btns = ['scat_01', 'scat_02', 'scat_03', 'scat_04', 'scat_05', 'scat_06', 'scat_07', 'scat_08', 'scat_09']
+		,	startBtn = document.getElementById('startBtn')
+	 	, Pendulum = function(min, max, startVal, incrby){
+				this.min = min;
+				this.max = max;
+				this.val = startVal;
+				this.incrby = incrby;
+				this.direction = true;
+
+				return function(){
+					switch (this.direction){
+						case true:
+							if(this.val < this.max)
+								return this.val += this.incrby
+								else 
+									this.direction = false
+									return this.val
+						break;
+						case false:
+							if(this.val > this.min)
+								return this.val -= this.incrby
+							else 
+								this.direction = true
+								return this.val
+						break;
+					}
+					return this.x ? this.x = false : this.x = true
+				}	
+			}
+		,	swing = Pendulum(0, btns.length - 1, btns.length - 1, 1)
+		, swingSwing = function(){
+				return swing()
+			}
+		,	ev = new window.EventEmitter2({
+	      wildcard: false,
+	      delimiter: '.', 
+				maxListeners: 1
+	    })
+		,	styles = document.getElementById('styles')
+		, scoreBoard = document.getElementById('score')
+		,	gameOn = document.getElementById('newGame')
+	;
+
+	var t = setInterval(swing, 27);
+
+	var burp = document.getElementById('burp');
+	burp.load();
+
+	var h = 180;
+	var loadCount = 9;
+	btns.forEach(function(b){
+		var wav = document.createElement('audio');
+		wav.addEventListener('canplaythrough', function(){
+				if(--loadCount === 0) {
+				document.getElementById('game').style['visibility'] = 'visible';
+				document.getElementById('loading').classList.add('hide')
+			}
+			else 
+console.log(loadCount)		});
+
+		wav.src= '../audio/'+b+'.wav';
+		wav.id=b;
+		wav.addEventListener('ended', function(){ev.emit(b)});
+		var pad = document.createElement('div');
+		pad.classList.add('pad');
+
+		var el = document.createElement('div');
+		el.classList.add(b);
+		el.classList.add('button');
+		el.id = b;
+		el.sonidol = wav; 
+		var t = h += (360 / btns.length);
+		var mozGrad = '-moz-linear-gradient(left, hsla('+(t)+', 90%, 60%, .6) 40%, hsla('+(t)+', 60%, 80%, .6))';
+		styles.textContent = '.'+b+'{ background-image: '+ mozGrad +';\r\n background-image: -webkit-linear-gradient(left, hsla('+(t)+', 90%, 60%, .6) 40%, hsla('+(t)+', 60%, 80%, .6))}' + '\r\n' + styles.textContent;
+
+		pad.appendChild(el);
+		document.getElementById('game').appendChild(pad)
+
+		el.addEventListener('mousedown', function(e){
+			var self = this;
+			self.classList.add('glowing');
+			self.sonidol.currentTime = 0;
+			self.sonidol.play();
+			ev.emit('click', b);
+		}, false);
+		el.addEventListener('mouseup', function(){
+			this.classList.remove('glowing')
+		}, false)
+	});
+
+
+	startBtn.onclick = function(){
+		newGame()
+	};
+
+	function newGame(){
+		gameOn.classList.remove('hide');
+		setTimeout(function(){
+			gameOn.classList.add('hide');
+				setTimeout(function(){
+					ev.removeAllListeners('click');
+					steps = [], points = 0;
+					advance()
+				}, 267)
+		},667)
+	};
+
+	function advance(){
+		var s = btns[swing()];
+		if(s === steps[steps.length-1]){ // no repeats cheat
+			advance()
+		}
+		else {
+			steps.push(s);
+			playSteps()
+			playTurn()	
+		}
+	};
+
+	function playSteps(cb){
+		var step = 0, elem = undefined;
+
+		playSoundAndLightUp()
+
+		function playSoundAndLightUp(){
+			if(step < steps.length){
+				var el = document.getElementById(steps[step]);
+				el.sonidol.currentTime = 0;
+				el.sonidol.play()
+				el.classList.add('glowing');
+				setTimeout(function(){el.classList.remove('glowing')},338)
+				++step;
+				ev.once(el.sonidol.id, function(){
+				})
+				setTimeout(playSoundAndLightUp, 667);
+			}
+			else {
+			}
+		}
+	};
+
+	function playTurn(){
+		var set = steps.slice(0)
+		,	x = 0
+		, correct = function(){return set[x]}
+	;
+
+		function isCorrect(data){
+			if(data != correct()){
+				burp.play()
+				setTimeout(newGame, 367)
+			}
+			else {
+				++x; ++points;
+				scoreBoard.textContent = 'Score: ' + points;
+				if(x === steps.length){
+					ev.once(data, function(){
+						advance()
+					})
+				}
+				else {
+					ev.once('click', isCorrect)					
+				}
+			}
+		}
+
+		ev.once('click', isCorrect)
+
+	};
+</script>
+</html>

@@ -1,0 +1,18 @@
+!!!
+html
+	head
+	body
+		h1= title
+		div(id='loginFormBasic')
+			fieldset
+				legend Login or 
+					a(href='join') join
+				form(action='/login', method='POST')
+					label(for='email') Email
+					br
+					input(type='text', name='email', id='email')
+					br
+					label(for='password') Password
+					br
+					input(type='password', name='password', id='password')
+					input(type='submit', value='login')

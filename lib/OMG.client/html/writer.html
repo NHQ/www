@@ -1,0 +1,67 @@
+
+<div id="terminal">
+  <pre id="editor">
+  </pre>
+</div>
+<div id="options">
+  <div style="zoom:1" class="large glyph"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="50px" height="50px" viewBox="-3.637 -8.005 83.496 100" enable-background="new -3.637 -8.005 83.496 100"
+ 	 xml:space="preserve" stroke="rgba(0,0,0,1)" stroke-width="0" fill="rgba(0,0,0,1)" style="cursor:pointer">
+<path d="M14.13,86.104l-25.307,6.175l-0.455-0.448l6.63-25.313L54.35,7.465c1.055-0.3,3.618-1.054,7.229-0.3l-62.964,62.97
+	l-1.806,6.627l7.23,7.232l6.775-1.809l3.018-2.863l0.297-6.778l-4.818-4.821L67.01,10.028c0.903,0.751,0.903,0.751,1.806,1.806
+	c8.588,8.438,4.667,14.914,4.667,14.914L14.13,86.104z M83.729,16.506l-5.575,5.572c0,0,4.218-6.478-4.521-14.914
+	c-7.685-7.681-14.914-4.37-14.914-4.37l5.878-5.875c5.272-5.421,14.46-5.421,19.58-0.3C90.202,2.196,89.45,10.78,83.729,16.506z"/>
+</svg>
+
+  </div>
+  <div style="zoom:1" class="large glyph writerOptionsIcon">l
+  </div><br/>
+  <div class="writerOptionsButton">
+    <div style="zoom:1" class="small glyph writerOptionsIcon">d 
+    </div>
+    <h1 data-event="click" id="newWriter" class="writeOptionsLabel">NEW
+    </h1>
+  </div><br/><a data-event="click" id="saveWriter" href="#" class="options">SAVE</a><br/>
+  <label for="autosave" style="zoom= .8">Auto-Save
+  </label>
+  <input type="checkbox" id="autoSave" data-event="change" checked="true" style="zoom=.8"/><br/><a data-event="click" id="deleteWriter" href="#" class="options">DELETE</a><br/><a data-event="click" id="loadWriter" href="#" class="options">RETRIEVE</a><br/>
+  <label for="setFontSize">Font Size
+  </label>
+  <select id="setFontSize" name="setFontSize" data-event="change" size="1">
+    <option value="12">12
+    </option>
+    <option value="14">14
+    </option>
+    <option value="16">16
+    </option>
+    <option value="18">18
+    </option>
+  </select><br/>
+  <label for="setTextMode">Text Mode
+  </label>
+  <select id="setTextMode" name="setTextMode" data-event="change" size="1">
+    <option value="text">Plain Text
+    </option>
+    <option value="html">HTML
+    </option>
+    <option value="markdown">Markdown
+    </option>
+    <option value="javascript">Javascript
+    </option>
+    <option value="css">CSS
+    </option>
+    <option value="stylus">Stylus
+    </option>
+    <option value="jade">Jade
+    </option>
+  </select><br/>
+  <label for="showGutter">Show Line Numbers
+  </label>
+  <input type="checkbox" id="showGutter" data-event="change" checked="true"/><br/>
+  <label for="showScrollX">Show Vertical Scroll Bar
+  </label>
+  <input type="checkbox" id="showScrollX" data-event="change" checked="true"/><br/>
+  <label for="setHighlightActiveLine">Highlight Current Line
+  </label>
+  <input type="checkbox" id="setHighlightActiveLine" data-event="change" checked="true"/>
+</div>

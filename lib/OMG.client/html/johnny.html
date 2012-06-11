@@ -1,0 +1,197 @@
+<!doctype html>
+<head>
+  <title>Johnny Honestly</title>
+  <meta name="google" value="notranslate">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<link rel='stylesheet' href='../css/ui-lightness/jqueryui.ui.css'>
+
+	<style>
+	body, div, h1, h2, h3, h4, a, img, audio, video, blockquote, svg, canvas{
+	  margin: 0;
+	  padding: 0;
+	}
+	body {
+		font-family: Times;
+		width: 100%;
+		height: 100%;
+		font-size:62.5%;
+		color: hsla(210, 80%, 30%, 1);
+		background-image: -webkit-radial-gradient(center, hsla(110,50%,50%,.65), hsla(110,80%,30%,1));
+    
+	}
+	
+	a{
+	  text-decoration:none;
+	  color: hsla(210, 80%, 50%, 1);
+	}
+
+  #container {
+    width: 100%;
+    height: 100%;
+    -webkit-perspective: 800; /* For compatibility with iPhone 3.0, we leave off the units here */
+    -webkit-perspective-origin: 50% 50%;    
+    background-image: -webkit-radial-gradient(center, hsla(110,50%,50%,.65), hsla(110,80%,30%,1));
+  }
+  .canvas {
+    width:100%;
+    height:100%;
+  }
+  
+  #stage {
+    -webkit-transform-style: preserve-3d;  
+  }
+  
+  #shape {
+    position: absolute;
+    top: 200px;
+		left: 200px;
+    margin: 0 auto;
+    -webkit-transform-style: preserve-3d;    
+  }
+  
+  .plane {
+    position: absolute;
+    display:block;
+    height: 50px;
+    width: 50px;
+    border: 1px solid white;
+    -webkit-border-radius: 12px;
+    -webkit-box-sizing: border-box;
+    background-image: -webkit-linear-gradient(right, hsla(110,50%,50%,1), hsla(110,80%,30%,1));
+    -webkit-backface-visibility: hidden;
+  }
+
+  #shape.backfaces .plane {
+    -webkit-backface-visibility: visible;
+  }
+  
+     .ring {
+       -webkit-transform-style: preserve-3d;    
+       
+     }
+  .ring > .one {
+        -webkit-transform: skewY(-30deg) translateZ(200px) ;
+      }
+
+      .ring > .two {
+        -webkit-transform: skewY(-30deg) rotateZ(100deg) translateX(-30px) translateY(60px);
+      }
+
+      .ring > .three {
+        -webkit-transform: skewY(-30deg) skewX(45deg) translateX(30px) translateY(-60px);
+      }
+
+      .ring > .four {
+        -webkit-transform: skewY(-30deg) translateZ(400px) rotateY(90) ;
+      }
+      .l20{
+        left: 200px;
+        -webkit-transform: skewY(180deg);
+      }
+      .l40{
+        top:500px;
+        left:460px;
+        -webkit-transform: skewY(180deg);
+      }
+			.slider {
+				position: absolute;
+				background: #333;
+				height: 400px;
+				right: 30px;
+			}
+
+			.skoo { -webkit-tranform: skewY(90deg)}
+			#flip-container {
+			  height:300px;
+			  width:300px;
+			}
+			#flip-container:hover #flipcard {
+        -webkit-transform: skewY(20deg) rotateY(180deg) skewY(20deg);
+      }
+      
+			#flipcard {
+      width: 100%;
+      height: 100%;
+      -webkit-transform-style: preserve-3d;
+      -webkit-transition: -webkit-transform .67s;
+      }
+      .face {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      }
+			.face.back{
+      display: block;
+      -webkit-transform: rotateY(180deg);
+      -webkit-box-sizing: border-box;
+      font-size: 12pt;
+       text-align: center;
+      -webkit-border-radius: 10px;
+      }
+      .face.back img, .face.front img {
+        width:100%;
+        height:100%
+      }
+      .xxx {
+        -webkit-transform: skewY(30deg) rotateZ(180deg);
+        -webkit-tranform-origin: 100% 100%;
+        
+      }
+      .ranger{
+        position:absolute;
+        right:30px;
+        top:30px;
+        height:100px;
+        width:30px;
+        -webkit-appearance: slider-vertical;
+        -moz-appearance: slider-vertical;
+        zoom: 2;
+      }
+      #xyRanger {
+        height:250px;
+        width:250px;
+        background:#333;
+        position: absolute;
+        right:260px;
+        top:30px;
+      }
+      .xyRangeFinder {
+        height:20px;
+        width:20px;
+        top:115px;
+        left:115px;
+        border-radius: 10px;
+        background: red;
+        z-index:3;
+      }
+      #xyRangeCanvas {
+        height:100%;
+        width:100%;
+        padding:0;
+        margin:0;
+        border:1px solid pink;
+        z-index:1;
+        
+      }
+	</style>
+</head>
+<body>
+<div class='canvas'>
+  <canvas id='bg'></canvas>
+</div>
+<div class='terminal'>
+  <div id='flip-container'>
+  	<div id='flipcard'>
+  	 <div class='front face'><img src='../images/moon.jpg' /></div>
+  	 <div class='back face'><img src='../images/home.jpg' /></div>
+  	</div>
+	</div>
+</div>
+</body>
+<script type='text/javascript' src='http://localhost:3333/client.deps.js'></script>
+<script type='text/javascript' src='http://localhost:3333/js/jquery.ui.min.js'></script>
+<script type='text/javascript' src='http://localhost:3333/js/johnny.js'></script>
+</html>

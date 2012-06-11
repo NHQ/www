@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">  
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Editor</title>
+  <style type="text/css" media="screen">
+    body {
+        background: hsla(145, 0%, 96.6%, 1);
+    }
+    #containment {
+
+    }
+    #editor { 
+        margin: 0;
+        position: absolute;
+        top:0;
+        left:200px;
+        right:200px;
+        bottom:0;
+        visibility:hidden;
+    }
+    .ace_editor {
+        position: absolute;
+        font-family: 'Menlo', 'Ubuntu Mono', 'Droid Sans Mono', 'Courier New', monospace;
+        font-size:12px;
+        
+    }
+    
+    .ace_scroller {
+        position: absolute;
+        overflow-x: hidden;
+        overflow-y: scroll;
+    }
+    
+    .ace_content {
+        position: absolute;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        cursor: text;
+    }
+    .ace_sb {
+      visibility:hidden;
+    }
+    #options {
+      display:none;
+    }
+    #showOptions {
+      position: fixed;
+      top: 30px;
+      right: 70px;
+      font-size:50px;
+      color:#fff;
+    }
+    
+    * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;}
+  </style>
+</head>
+<body>
+<div id='showOptions'>Ω</div>
+<div id="options">
+  <a class='options' data-event='click' id='newWriter' href='#'>NEW</a><br />
+  <a class='options' data-event='click' id='saveWriter' href="#">SAVE</a><br />
+  <label for='autoSave' style="zoom:.8">Auto-Save</label>
+  <input type='checkbox' id='autoSave' data-event='change' checked='true' style="zoom:.8">
+  <br />
+  <a class='options' data-event='click' id='deleteWriter' href='#'>DELETE</a><br />
+  <a class='options' data-event='click' id='loadWriter' href='#'>RETRIEVE</a><br />
+  <label for='setFontSize'>Font Size:</label>
+  <select id='setFontSize' name='setFontSize' data-event='change' size=1>
+    <option value=12>12</option>
+    <option value=14>14</option>
+    <option value=16>16</option>
+    <option value=18>18</option>
+  </select> 
+  <br />
+  <label for='textMode'>Text Mode</label>
+  <select id='textMode' name='textMode' data-event='change' size=1>
+    <option value='text'>Plain Text</option>
+    <option value='html'>HTML</option>
+    <option value='markdown'>Markdown</option>
+    <option value='javascript'>Javascript</option>
+    <option value='css'>CSS</option>
+    <option value='stylus'>Stylus</option>
+    <option value='jade'>Jade</option>
+  </select>
+  <br />
+  <label for='showGutter'>Show Line Numbers</label>
+  <input type='checkbox' id='showGutter' data-event='change' checked='true'> 
+  <br />
+  <label for='showScrollX'>Show Vertical Scroll Bar</label>
+  <input type='checkbox' id='showScrollX' data-event='change' checked='true'>
+  <br />
+  <label for='setHighlightActiveLine'>Highlight Current Line</label>
+  <input type='checkbox' id='setHighlightActiveLine' data-event='change' checked='true'>
+</div>
+<div id='console'>
+  <pre id="editor"></pre>
+</div>
+</body>
+<script src="src/ace-noconflict.js" type="text/javascript" charset="utf-8"></script>
+<script src="src/theme-textmate-noconflict.js" type="text/javascript" charset="utf-8"></script>
+<script src="src/mode-javascript-noconflict.js" type="text/javascript" charset="utf-8"></script>
+<script id=source src="http://localhost:3333/cient.deps.js" type="text/javascript" charset="utf-8"></script>
+<script id=source src="http://localhost:3333/browserify.js" type="text/javascript" charset="utf-8"></script>
+
+<script>
+</script>
+<style>
+  .ace_editor {
+      position: absolute;
+      overflow: hidden;
+      font-family: 'Droid Sans Mono', 'Menlo', 'Ubuntu Mono', 'Droid Sans Mono', 'Courier New', monospace;
+  }
+</style>
+</html>

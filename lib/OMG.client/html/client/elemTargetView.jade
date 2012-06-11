@@ -1,0 +1,37 @@
+div(class='cssPrimitivesWrapper')
+  h1= ' <' + selected.elem.tagName.toLowerCase() + '>'
+  each style, x in styles
+    div(id=x, class='cssPrimitives')
+      span.cssProperty 
+        =x + ':'
+     each props in style
+       each prop, key in props
+         - if(selected.elem.styles[key])
+           span.cssType
+             = '@' + selected.elem.styles[key].primitive.value.type + primitive.value.type + ' '
+             if (typeof css.primitive.value.val === 'object')
+           p= selected.elem.styles[key].primitive.value.type
+         else
+           p= key
+
+  div(id='propertyBackground', data-type='multi', class='cssPrimitives cssHelpers')
+    span.cssProperty Background
+    br
+  - for css in selected.css
+    div(id=css.property, data-type=css.primitive.value.type, class='cssPrimitives ' + css.primitive.type)
+      span.cssProperty 
+        =css.property + ':'
+      br
+      span.cssType
+        = '@' + css.primitive.value.type + ' '
+      - if (typeof css.primitive.value.val === 'object')
+        span.cssPrimitiveVal
+          = 'rgb(' + css.primitive.value.val.r + ', ' + css.primitive.value.val.g + ', ' + css.primitive.value.val.b + ')'
+      - else if (css.primitive.value.type === 'string')
+        span(contenteditable='true', type='text', class='cssPrimitiveVal cssString', data-value=css.primitive.value.val)
+          =css.primitive.value.val
+      - else
+        span(class='cssPrimitiveVal ' + css.primitive.value.type, data-value=css.primitive.value.val, data-unit= css.primitive.value.unit)
+          = css.primitive.value.val
+      span.cssPrimitiveUnit
+        = css.primitive.value.unit

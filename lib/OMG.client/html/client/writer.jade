@@ -1,0 +1,46 @@
+div#terminal
+  pre#editor
+
+div#options
+  div(style='zoom:1', class='large glyph')
+    != getSVG('pencil', 50, 50)
+  div(style='zoom:1', class='large glyph writerOptionsIcon') l
+  br
+  div(class='writerOptionsButton')
+    div(style='zoom:1', class='small glyph writerOptionsIcon') d 
+    h1(class='writeOptionsLabel', data-event= 'click', id='newWriter') NEW
+  br
+  a(class= 'options', data-event= 'click', id= 'saveWriter', href= '#') SAVE
+  br
+  label(for= 'autosave', style= 'zoom= .8') Auto-Save
+  input(type= 'checkbox', id= 'autoSave', data-event= 'change', checked= 'true', style= 'zoom=.8')
+  br
+  a(class='options', data-event= 'click', id= 'deleteWriter', href= '#') DELETE
+  br
+  a(class= 'options', data-event= 'click', id= 'loadWriter', href= '#') RETRIEVE
+  br
+  label(for='setFontSize') Font Size
+  select(id= 'setFontSize', name= 'setFontSize', data-event= 'change', size=1)
+    option(value=12) 12
+    option(value=14) 14
+    option(value=16) 16
+    option(value=18) 18
+  br
+  label(for= 'setTextMode') Text Mode
+  select(id= 'setTextMode', name= 'setTextMode', data-event= 'change', size=1)
+    option(value= 'text') Plain Text
+    option(value= 'html') HTML
+    option(value= 'markdown') Markdown
+    option(value= 'javascript') Javascript
+    option(value= 'css') CSS
+    option(value= 'stylus') Stylus
+    option(value= 'jade') Jade
+  br
+  label(for= 'showGutter') Show Line Numbers
+  input(type= 'checkbox', id= 'showGutter', data-event= 'change', checked= 'true')
+  br
+  label(for= 'showScrollX') Show Vertical Scroll Bar
+  input(type= 'checkbox', id= 'showScrollX', data-event= 'change', checked= 'true')
+  br
+  label(for= 'setHighlightActiveLine') Highlight Current Line
+  input(type= 'checkbox', id= 'setHighlightActiveLine', data-event= 'change', checked= 'true')
