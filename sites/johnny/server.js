@@ -1,13 +1,3 @@
-mono
-function what(x){ 
-	this.z = x;
-	var that = this;
-	function abadad(){
-		this.__proto__ = that;
-		return what
-	};
-	return new abadad()
-}
 
 var connect = require('connect')
 ,		fs = require('fs')

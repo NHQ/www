@@ -1,0 +1,4 @@
+Greetings. I am Johnny. I am a web developer, network technologist, and a hacker. I build HTML5
+apps. I construct Node.js applications for the web and desktop. I administer Linux servers. I code pixel precise CSS.
+I use SQL, Document and Graph databases. I build real-time state machines. I scrape websites.
+I deal with every API. I route and proxy. I am an open-source librarian. I have 5 years experience in web development. I am at your servent.

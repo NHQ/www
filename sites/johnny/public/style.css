@@ -1,0 +1,40 @@
+body {
+    width:960px;
+    border-left: 1px dotted brown;
+    border-right: 1px dotted brown;
+
+}
+
+h1, h2, h3, h4 {text-decoration:underline}
+
+h1 { font-size:200%}
+h2 {font-size:150%}
+h3 {font-size:125%}
+h4 {font-size:115%}
+
+.nav {
+    width: 230px;
+    float:left;
+    margin-left:30px
+}
+
+.nav li {
+    width:100%;
+    display:block;
+}
+
+li.selected {
+    text-align:right;
+}
+
+.profile {
+    margin-left: 30px;
+    width: 667px;
+    float: right;
+}
+
+textarea {
+    width:100%;
+    height: 320px;
+    font-size: 150%;
+}
