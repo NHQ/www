@@ -2,22 +2,43 @@ body {
     width:960px;
     border-left: 1px dotted brown;
     border-right: 1px dotted brown;
-
+		font-size:62.5%;
 }
 
 h1, h2, h3, h4 {text-decoration:underline}
 
-h1 { font-size:200%}
-h2 {font-size:150%}
-h3 {font-size:125%}
-h4 {font-size:115%}
+h1 { font-size:2.5em}
+h2 {font-size:2em}
+h3 {font-size:1.5em}
+h4 {font-size:1.2em}
+p {
+	text-indent:3ex;
+	font-size: 1.6em;
+	font-family: Georgia;
+	line-height:120%;
+}
 
+li{
+	font-family: helvetica;
+	font-size:1.8em;
+	font-weight:300;
+}
+li:hover {
+	-webkit-transition: 3s;
+	background:#eee;
+}
 .nav {
     width: 230px;
     float:left;
-    margin-left:30px
+    margin-left:30px;
+		-webkit-transform-origin:left;
+		-webkit-transform: perspective(600px) rotateY(35deg);
 }
-
+.nav:hover{
+	-webkit-transition-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000); 
+	-webkit-transition: 500ms;
+	-webkit-transform: perspective(600px) rotateY(0deg) ;
+}
 .nav li {
     width:100%;
     display:block;
@@ -29,10 +50,26 @@ li.selected {
 
 .profile {
     margin-left: 30px;
-    width: 667px;
-    float: right;
+    width: 450px;
+    float: left;
 }
 
+.slide {
+	margin: 0 0 30px 0;
+}
+.tech {
+	float:left;
+	width:210px;
+	padding:5px;
+}
+.front {
+	text-align: right;
+	border-right:1px solid #000;
+}
+.back {
+	border-left:1px solid #000;
+
+}
 textarea {
     width:100%;
     height: 320px;
