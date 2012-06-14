@@ -5,6 +5,7 @@ var connect = require('connect')
 ,		parseURL = require('url').parse
 ,		path = require('path')
 ,		compile = require('jade.compiler')(__dirname)
+,		style = require('stylus')
 ;	
 
 var Static = connect.static(__dirname + '/public');
@@ -18,7 +19,7 @@ var authentication = function(req, res){
 		if (req.method === 'GET')
 		{
 		
-			var html = compile('layout', {body: 'index', title: 'You got SWerved!'});
+			var html = compile('layout', {body: 'index', title: 'This is my resume'});
 						
 			res.write(html);
 						

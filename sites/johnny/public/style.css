@@ -1,11 +1,12 @@
 body {
-    width:960px;
+    width:760px;
     border-left: 1px dotted brown;
     border-right: 1px dotted brown;
 		font-size:62.5%;
+		margin: 0 auto;
 }
 
-h1, h2, h3, h4 {text-decoration:underline}
+h1, h2, h3, h4, a {text-decoration:none}
 
 h1 { font-size:2.5em}
 h2 {font-size:2em}
@@ -23,29 +24,45 @@ li{
 	font-size:1.8em;
 	font-weight:300;
 }
-li:hover {
-	-webkit-transition: 3s;
-	background:#eee;
+a {
+}
+a:hover {
+	transition-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000); 
+	transition: 1s;
 }
 .nav {
     width: 230px;
-    float:left;
+    float:right;
     margin-left:30px;
-		-webkit-transform-origin:left;
-		-webkit-transform: perspective(600px) rotateY(35deg);
+		transition-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000); 
+		transition: 500ms;
+ 		transform-style: preserve-3d;
+		transform-origin: right;
+		transform:perspective(600px) rotateY(-15deg);
 }
 .nav:hover{
-	-webkit-transition-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000); 
-	-webkit-transition: 500ms;
-	-webkit-transform: perspective(600px) rotateY(0deg) ;
+	transition-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000); 
+	transition: 500ms;
+	transform: rotateY(0deg);
 }
 .nav li {
+		padding-bottom:.5ex;
+		border-bottom: 1px dashed red;
+		margin: 2ex 0;
     width:100%;
     display:block;
 }
 
+.nav li:hover {
+
+}
+
+.nav li:hover ~ li {
+}
+
 li.selected {
-    text-align:right;
+/*    text-align:right;
+*/
 }
 
 .profile {
