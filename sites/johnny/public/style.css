@@ -71,8 +71,9 @@ li.selected {
     width: 450px;
     float: left;
  		transform-style: preserve-3d;
-		transform-origin: 50% 2000px;
+		transform-origin: 50% 1000px;
 		z-index:1;
+		min-height:1000px;
 		
 }
 
