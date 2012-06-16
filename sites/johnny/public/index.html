@@ -6,156 +6,212 @@
   </title>
    <link rel='stylesheet' href='reset.css' />
   <link rel='stylesheet' href='style.css' />
+  <link rel='stylesheet' href='wildstyle.css' />
+
 	<script type='text/javascript' src='prefixfree.js'></script>
 </head>
 <body>
-  <ol class='nav' id-'nav'>
-    <li id='greetings' class='selected'>
+  <ol class='nav' id='nav'>
+    <li id='' class='selected'>
       <a href='#greetings'>
         Greetings
       </a>
     </li>
-    <li id='front'>
+    <li id=''>
       <a href='#front'>
         Front-end
       </a>
     </li>
-    <li id='server'>
+    <li id=''>
       <a href='#server'>
         Server Side
       </a>
     </li>
-    <li id='nodejs'>
+    <li id=''>
       <a href='#nodejs'>
         Node.js
       </a>
     </li>
-    <li id='openSource'>
+    <li id=''>
       <a href='#openSource'>
         Open Source
       </a>
     </li>
-    <li id='interest'>
+    <li id=''>
       <a href='#interest'>
         Areas of Interests
       </a>
     </li>
-    <li id='history'>
+    <li id=''>
       <a href='#history'>
         Work History
       </a>
     </li>
-    <li id='bizops'>
+    <li id=''>
       <a href='#bizops'>
         Non-programming Roles?
       </a>
     </li>
-    <li id='message'>
+    <li id=''>
       <a href='#message'>
         Send Me A Message
       </a>
     </li>
+    <li>
+        <input id='scale' type='range' value='0' min='-360' max='0' step='1'></input>
+    </li>
   </ol>
-  
-<div class='profile'>
+
+<div class='profile' id='profile'>
+	
   <div class='slide' id='greetings'>
       <p>Greetings. I am Johnny, and I am at your service. I am a web developer, network technologist, and a hacker. I am currently available for consultation, contracting, and permanent employment--anywhere in the world!</p> 
 	</br />
 	<p>
 		I am qualified for many roles, on the computer and away from it. Use this document to get know me, and see where I fit on your team. Then use it contact me.
 	</p>
-	<br />
-	<p>
-		
-	</p>
-	<ul>
-		<li>Build HTML5 Apps</li>
-		<li>Design and Write your API</li>
-		<li>Build Node.js applications for the web and desktop</li>
-		<li>Dev Ops</li>
-		<li>Linux Administration</li>
-		<li>DBA with SQL, Document and Graph DBs</li>
-		<li>Scrape the web</li>
-		<li>Write Chrome Extensions</li>
-		<li>Route and proxy distributed systems</li>
-		<li>Open Source Solutions</li>
-		<li>And much, much more!</li>
-	</ul>
-  <br />
-  <p>You may also consider me for non-programming roles within your organization. I can be relied on to manage a project, a team, a client list, or developer relations. I will bring energy, ideas and a  unique perspective to your R&ampD,  product development, or marketing. Start-ups encouraged to apply!
-  </p>
   </div>
 
-  <div id='technology' class='slide'>
-      <div class='tech front'>
-          <h3>HTML / Browser</h3>
-          <ul>
-              <li>All new HTML5 APIS</li>
-              <li>CSS 3</li>
-              <li>Transitions and Animations</li>
+  <div class='slide' id='font'>
+  	<h1>Whatever can be done in the browser, I can do it.</h1>
+`	<br />
+	<p>Each year, billions of devices will shipped with new HTML5 Browsers. Are you building applications for the future?</p><br />
+	<p>Originally a front-end end hacker, I have many years experience with HTML, CSS, and Javascript. Today, front-end development far goes beyond layout and style.</p><br /><p> Every week sees upgrades and additions to the browser playform. You need somebody who knows the front-end in and out. You need somebody who knows:</p>
+          <ul class='ilist'>
+              <li>All New APIs</li>
+              <li>the latest in CSS</li>
               <li>Canvas</li>
-              <li>Single page apps</li>
-              <li>AJAX</li>
-              <li>Socket Streaming</li>
-              <li>Expert Javascript</li>
-              <li>jQuery, et al</li>
+              <li>AJAX, CORS, JSONP</li>
               <li>SVG</li>
               <li>Fonts</li>
               <li>Touch and Mobile</li>
-              <li>Interface Design</li>
+              <li>Socket streaming</li>
+              <li>Sync and Async behaviors</li>
+              <li>Dependency handling</li>
+              <li>Debugging</li>
+              <li>Versioning</li>
+              <li>ES5</li>
+			<li>DOM</li>
           </ul>
-      </div>
-      <div class='tech back'>
-          <h3>Server</h3>
-          <ul>
-              <li>Node.js</li>
-              <li>TCP/IP</li>
-              <li>HTTP, UDP, Sockets</li>
+	<br />
+	<h1>I've got you covered.</h1>
+  </div>
+
+  <div id='server' class='slide'>
+      <h1>The next class of web applications</h1>
+		<br />
+		<p>The developers who will lead the way know how to write custom servers, in addition to application logic, authentication schemes, database models, and APIs. They must also know how to experiment and prototype using new and foreign technologies. I don't know everything, but I you might find some of this useful</p>
+          <ul class='ilist'>
+              <li>Node.js FTW</li>
+              <li>TCP/IP, UDP, Sockets</li>
+              <li>HTTP</li>
               <li>REST APIs</li>
               <li>Proxies</li>
               <li>Data modeling</li>
               <li>Distributed Systems</li>
-              <li>MongoDB, Redis, MySQL</li>
+              <li>MongoDB, Redis, MySQL, Riak, Neo4j, Couch</li>
               <li>Bash scripting</li>
-              <li>PAckage Management</li>
+              <li>Package Management</li>
               <li>File Systems</li>
               <li>Linux Admin</li>
-              <li>LAMP</li>
+              <li>Web Scraping</li>
+				<li>OAuth</li>
           </ul>
-      </div>
   </div>
+ 
+  <div id='nodejs' class='slide'>
+  	<h1>An Ode 2 Node</h1><br />
+	<p>
+		As a front-end developer, Javascript has become my second language. With Node.js, it may become my first.
+		
+	</p><br/>
+	<p>
+		For all of the gossip and gospel surrounding Node.js, a few things stand out: it's fast, it's fun, and it raised servers and networking protocols to the forefront of application development.
+		And just in time, too!
+	</p><br />
+	<p>
+		Treat your traffic to custom servers, go with Node.js.
+	</p>
+  </div>
+
+  <div class='slide' id='consult'>
+	  	<h1>Have you tried adding a listener?</h1><br />
+		<p>
+			True Story: when I was growing up, I was commanded to "speak when spoken to", and otherwise stay quiet. That's how became a listener.</p>
+		</p><br />
+		<h2>Pre-processing</h2><br />
+		<p>If you are considering a new web application or project, you can save time and money in the future by consulting today.
+			Get the knowledge you need from somebody with extensive knowledge of the web app ecosystem.</p>
+		<br />
+		<h2>En Media Res</h2><br />
+		<p>Are you in the middle of a large, hairy development, and you need somebody who will listen, seek to understand, and dig deep for solutions? I am at your service.
+		</p><br />
+		<h2>Take a little R&ampR</h2><br />
+		<p>
+			I'm a consult, not a psychologist. I don't just sit back, listen and read back my scribbles.</p><br /><p>I'll do the research and write a report. On site, on the phone, or via the wifi. Need a presentation? With custom charts and graphs, using <a href='http://ricostacruz.com/jquery.transit/' target='_blank'>awesome</a>, open-source HTML <a href='http://bartaz.github.com/impress.js/#/tiny' target='_blank'>presentation</a> <a href='http://www.sequencejs.com/' target='_blank'>plugins</a>?
+		</p></br />
+		<p>Leave it to me, Jeffe.</p>
+  </div>
+
   <div class='slide' id='openSource'>
-        <p>I am student and follower of open source software. I learned and work exclusively on open source. 
-          LAMP, Wordpress, Drupal, jQuery--Like so many others, I began my hacking on these.
-          Today, I use dozens of open source modules in every website or application. From my server's OS to browser APIs.
-          I use Github keep track of dozens of open source projects, and am extremely resourceful and finding projects new and old to meet the demands
-          almost any project.
-          </p>
-        <h2>My current favorite Open Source projects are:</h2> 
-        <ul>
-          <li>
-            <a href='http://nodejs.org' target='_blank'>Node.js</a> - Event-oriented, non-blocking and awesome 
-          </li>
-          <li>
-            <a href='http://redis.io' target='_blank'>Redis</a> - Multi-purpose, low-level, and extremely fast database
-          </li>
-          <li>
-            <a href='http://github.com/substack/browserify' target='_blank'>Brwoserify</a> - Front-end module management for large javascript applications, the Node.js way.
-          </li>
-          <li>
-            <a href='http://github.com/visionmedia/jade' target='_blank'>Jade</a> - HTML Templating with a Javascript-like syntax (works in the browser too!)
-          </li>
-          <li>
-            <a href='http://github.com/visionmedia/stylus' target='_blank'>Stylus</a> - CSS Preprocessor and Power Up (like SASS and LESS), by the man behind Jade
-          </li>
-          <li>
-            <a href='http://paperjs.org' target='_blank'>Paper.js</a> - Great API for amazing vector graphics library for HTML Canvas
-          </li>
-          <li>
-            <a href='' target='_blank'>Timbre.js</a> - Very new, very impressive library for audio synthesis in the browser (HTML5 Audio).
-          </li>
-        </ul>
-      </div>
+			<h1>OPEN SOURCERY</h1>
+			<br />
+	        <p>I am student and follower of open source software. No, I'm more like an open source citizen. I work exclusively with open source technology. I troll github <a href='https://github.com/joyent/node/network'>network graphs</a> to find forks and fixes.</p><br />
+			<h2>Ugly Beginnings</h2><br />
+			<p>
+	          Like many of my peers, I began my journey hacking PHP CMSs and LAMP backends in the mid-aughts.
+	          Today, I use dozens of open source projects in every website or application. From the operating system to browser libraries. 
+			</p><br />
+			<h2>Auto-Discovery</h2><br />
+			<p>For me, 'professional development' is keeping track of what is going on in Open Source. I have to know!<br /><br />
+				I love finding new projects, trying them, and watching them mature.
+	          I use Github keep track of dozens of open source projects, and am very resourceful and finding and assessing projects new and old.
+	          </p><br />
+	        <h2>A few of my favorite Open Source projects:</h2><br />
+	        <ul class='os'>
+	          <li>
+	            <a href='http://nodejs.org' target='_blank'>Node.js</a> - Event-oriented, non-blocking and awesome 
+	          </li>
+	          <li>
+	            <a href='http://redis.io' target='_blank'>Redis</a> - Multi-purpose, low-level, and extremely fast database
+	          </li>
+	          <li>
+	            <a href='http://github.com/substack/browserify' target='_blank'>Browserify</a> - Front-end module management for large javascript applications, the Node.js way.
+	          </li>
+	          <li>
+	            <a href='http://github.com/visionmedia/jade' target='_blank'>Jade</a> - HTML Templating with a Javascript-like syntax (works in the browser too!)
+	          </li>
+	          <li>
+	            <a href='http://github.com/visionmedia/stylus' target='_blank'>Stylus</a> - CSS Preprocessor and Power Up (like SASS and LESS), by the man behind Jade
+	          </li>
+	          <li>
+	            <a href='http://paperjs.org' target='_blank'>Paper.js</a> - Amazing vector graphics library for HTML Canvas, with an excellent API
+	          </li>
+	          <li>
+	            <a href='' target='_blank'>Timbre.js</a> - Very new, very impressive library for audio synthesis in the browser.
+	          </li>
+	        </ul>
+	  </div>
+
+  <div clas='slide' id='pinterests'>
+  	<h1>That's not a career, that's my life!</h1>
+	<br />
+	<p>
+		I'll be very excited to work on your team if your team is working to solve problems, make improvements, or develop products for the following sectors:
+	</p><br />
+	<ul class='ilist'>
+		<li>Public Education</li>
+		<li>Journalism &amp Editorial</li>
+		<li>Civics &amp Government</li>
+		<li>Music</li>
+		<li>HTML Games</li>
+		<li>Food</li>
+		<li>Content Networks</li>
+		<li>Publishing</li>
+		<li>Experimental or pioneering Science</li>
+	</ul>
+  </div>
+
   <div class='slide' id='history'>
         <p>
           Epiphanies about the future are what inspired me to become a programmer, specifically for browser and web technologies. 
@@ -170,15 +226,24 @@
             Prior to that, I held an assortment of jobs, in several industry: security, live event production... bartender, taxi driver.   
             My first job was delivering newspapers on a bike route. This is precisely the period that paperboy was a popular NES game.     
           </p>
-      </div>
+  </div>
+
   <div class='slide' id='message'>
           <span class='email'>Jonathon@nationalheadquarters.org</span><br />
           <span class='phone'>tel:+13105323639</span>
           <textarea>Leave me a message. I'll receive it as a text on my phone, via Twilio's API. Don't forget to leave contact information!
           </textarea>
-      </div>
-</div>
+  </div>
 
+</div>
+<script type='text/javascript'>
+	var scale = document.getElementById('scale');
+	var profile = document.getElementById('profile');
+	scale.onchange = function(){
+		console.log(this.value);
+		profile.style['-webkit-transform'] = 'perspective(2000px) rotateZ('+this.value+'deg)'
+	}
+</script>
 </body>
 
 
