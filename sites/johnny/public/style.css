@@ -1,9 +1,9 @@
 body {
-    width:760px;
-    border-left: 1px dotted brown;
-    border-right: 1px dotted brown;
+    width:450px;
 		font-size:62.5%;
 		margin: 0 auto;
+		overflow:hidden;
+		background-image: -webkit-radial-gradient(white 20%, green)
 }
 
 h1, h2, h3, h4, a {text-decoration:none}
@@ -31,20 +31,62 @@ a:hover {
 	transition: 1s;
 }
 .nav {
-		z-index:9;
-    width: 230px;
-    float:right;
-    margin-left:30px;
-		transition-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000); 
-		transition: 500ms;
- 		transform-style: preserve-3d;
-		transform-origin: right;
-		transform:perspective(600px) rotateY(-15deg);
+	opacity:0;
+margin-left:11px;
 }
-.nav:hover{
+.navi {
+	position:fixed;
+	top:-3px;
+	height: 60px;
+	width:67px;
+	right: -73px;
+	background-image: url(noun_project_2836.svg);
+	background-size: 40px 40px ;
+	background-repeat: no-repeat;
+	background-color:white;
+	background-position:14px 9px;
+	border:3px solid black;
+	border-left:3px dotted black;
+	transform-origin:center;
+	transition-timing-function: cubic-bezier(0.000, 1.650, 0.980, 1.220);
+	transition: all 300ms;
+	cursor:pointer;
+	animation-iteration-count: 1;
+	animation-fill-mode: backwards;
+}
+
+.navi > * {
+	visibility:hidden;
+	transition-timing-function: cubic-bezier(0.000, 1.650, 0.980, 1.220);
+	transition: opacity 3s;
+	opacity:0;
+}
+
+.navi:hover {
+	background-color:white;
+	background-image:none;
+	right:-256px;
+	width:250px;
+	height:350px;
+}
+.navi:hover > * {
+	width: 230px;
+	visibility:visible;
+	opacity: 1;
+}
+.swing {
 	transition-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000); 
 	transition: 500ms;
-	transform: rotateY(0deg);
+	transform-style: preserve-3d;
+	transform-origin: right;
+	transform:perspective(2000px) rotateY(-15deg) translate3d(0px, 0px, 0px);
+	z-index:99;
+}
+.nav:hover{
+	z-index:99;
+	transition-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000); 
+	transition: 500ms;
+	transform: perspective(2000px) rotateY(0deg) translate3d(0px, 0px, 0px);
 }
 .nav li {
 		padding-bottom:.5ex;
@@ -54,34 +96,90 @@ a:hover {
     display:block;
 }
 
-.nav li:hover {
-
-}
-
-.nav li:hover ~ li {
-}
-
-li.selected {
-/*    text-align:right;
-*/
-}
-
 .profile, .profile > div {
-    margin-left: 30px;
+    margin: 0 auto;
     width: 450px;
-    float: left;
  		transform-style: preserve-3d;
 		transform-origin: 50% 1000px;
-		z-index:1;
-		min-height:1000px;
+		perspective: 2000px;
+		z-index:-1;
+		position:absolute;
+}
+
+.profile {
+	min-height:100%;
+}
+
+.profile > div {
+	height:1000px;
+}
+
+.boing {
+	transform-origin: 50% 1000px;
+	transform-style: preserve-3d flat;
+	animation-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000);  
+	animation: boing 3s;
+	perspective: 2000px;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+	z-index:-1;
+	position:none;
+}
+
+.boing ~ * {
+	z-index:9;
+}
+
+@keyframes boing{	
+	0% {
+		transform-style: preserve-3d;
 		
+		transform: perspective(2000px) rotateZ(0deg) translate3d(0,0,0) ;
+	}
+	25% {
+		transform-origin: 50% 550px;
+		transform-style: preserve-3d;
+		
+		transform: perspective(2000px) rotateZ(0deg) translate3d(0,-450px,-2000px);
+	}
+	80% {
+		transform-style: preserve-3d;
+		transform-origin: 50% 550px;
+		transform: perspective(2000px) rotateZ(360deg) translate3d(0,-450px,-2000px);
+	}
+	100% {
+		transform-style: preserve-3d;
+		transform: perspective(2000px) rotateZ(360deg) translate3d(0,0,0);
+	}
+}
+
+.spin {
+	transform-origin: 50% 1000px;
+	animation-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000);  
+	animation: spin 3s;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards
+}
+
+@keyframes spin {
+	from {
+		transform: scale(1) rotateZ(0) perspective(2000px);
+	}
+	to {
+		transform: scale(.8) rotateZ(360deg) perspective(2000px);
+	}
 }
 
 .slide {
 	position: absolute;
-	margin: 0 0 30px 0;
+	margin:0 0 30px 0;
+	top: 21px;
 	z-index:1;
-	
+}
+
+.slide > p {
+ padding: 1ex 2ex;
+font-size: 1.6rem;	
 }
 
 .tech, .ilist {
