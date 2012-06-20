@@ -1,18 +1,62 @@
+@media all and (min-width: 1001px) {
+	.boing {
+		transform-origin: 50% 1000px;
+		transform-style: preserve-3d flat;
+		animation-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000);  
+		animation: boing 3s;
+		perspective: 2000px;
+		animation-iteration-count: infinite;
+		animation-fill-mode: forwards;
+		z-index:-1;
+		position:none;
+	}
+
+	.boing ~ * {
+		z-index:9;
+	}
+
+	@keyframes boing{	
+		0% {
+			transform-style: preserve-3d;
+
+			transform: perspective(2000px) rotateZ(0deg) translate3d(0,0,0) ;
+		}
+		25% {
+			transform-origin: 50% 550px;
+			transform-style: preserve-3d;
+			transform: perspective(2000px) rotateZ(0deg) translate3d(0,-450px,-2000px);
+		}
+		80% {
+			transform-style: preserve-3d;
+			transform-origin: 50% 550px;
+			transform: perspective(2000px) rotateZ(360deg) translate3d(0,-450px,-2000px);
+		}
+		100% {
+			transform-style: preserve-3d;
+			transform: perspective(2000px) rotateZ(360deg) translate3d(0,0,0);
+		}
+	}	
+}
+
+
+
 
 .profile > div.selected {
 	opacity: 1;
 	z-index:2;
-	background-image:linear-gradient(top, rgba(255,255,255,1) 60%, rgba(255,255,255,.1));
+	background-image:linear-gradient(top, rgba(255,255,255,1) 40%, rgba(255,255,255,.1));
 /*	background-image: -webkit-linear-gradient(top, rgba(0,0,0,1),  rgba(255,255,255,0) 2%, rgba(255,255,255,0) 98%, rgba(0,0,0,.5)), 
 										-webkit-linear-gradient(left, rgba(0,0,0,1),  rgba(255,255,255,0) 5%, rgba(255,255,255,0) 95%, rgba(0,0,0,.5));
 */
-	border:3px solid black
+	border:3px double black;
+	border-radius: 7px;
+	border-top-right-radius:0;
 }
 
 .profile > div:not(.selected) {
 	opacity: .1;
 	z-index:-1;
-	border:3px solid black
+	border:3px solid black;
 }
 
 
@@ -20,9 +64,7 @@
  visibility:hidden;
 }
 .profile > div:not(.selected):hover > * {
- visibility:visible;
 	cursor:pointer;
-
 }
 
 .profile > div {

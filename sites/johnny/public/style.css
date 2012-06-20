@@ -2,7 +2,8 @@ body {
     width:450px;
 		font-size:62.5%;
 		margin: 0 auto;
-		overflow:hidden;
+		overflow-y:auto;
+		overflow-x:hidden;
 		background-image: -webkit-radial-gradient(white 20%, green)
 }
 
@@ -45,8 +46,8 @@ margin-left:11px;
 	background-repeat: no-repeat;
 	background-color:white;
 	background-position:14px 9px;
-	border:3px solid black;
-	border-left:3px dotted black;
+	border:3px double black;
+	border-left:none;
 	transform-origin:center;
 	transition-timing-function: cubic-bezier(0.000, 1.650, 0.980, 1.220);
 	transition: all 300ms;
@@ -58,7 +59,7 @@ margin-left:11px;
 .navi > * {
 	visibility:hidden;
 	transition-timing-function: cubic-bezier(0.000, 1.650, 0.980, 1.220);
-	transition: opacity 3s;
+	transition: opacity 1s;
 	opacity:0;
 }
 
@@ -67,7 +68,7 @@ margin-left:11px;
 	background-image:none;
 	right:-256px;
 	width:250px;
-	height:350px;
+	height:380px;
 }
 .navi:hover > * {
 	width: 230px;
@@ -89,8 +90,8 @@ margin-left:11px;
 	transform: perspective(2000px) rotateY(0deg) translate3d(0px, 0px, 0px);
 }
 .nav li {
-		padding-bottom:.5ex;
-		border-bottom: 1px dashed red;
+		padding-bottom:1ex;
+		border-bottom: 3px dotted black;
 		margin: 2ex 0;
     width:100%;
     display:block;
@@ -111,47 +112,9 @@ margin-left:11px;
 }
 
 .profile > div {
-	height:1000px;
+	height:1500px;
 }
 
-.boing {
-	transform-origin: 50% 1000px;
-	transform-style: preserve-3d flat;
-	animation-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000);  
-	animation: boing 3s;
-	perspective: 2000px;
-	animation-iteration-count: 1;
-	animation-fill-mode: forwards;
-	z-index:-1;
-	position:none;
-}
-
-.boing ~ * {
-	z-index:9;
-}
-
-@keyframes boing{	
-	0% {
-		transform-style: preserve-3d;
-		
-		transform: perspective(2000px) rotateZ(0deg) translate3d(0,0,0) ;
-	}
-	25% {
-		transform-origin: 50% 550px;
-		transform-style: preserve-3d;
-		
-		transform: perspective(2000px) rotateZ(0deg) translate3d(0,-450px,-2000px);
-	}
-	80% {
-		transform-style: preserve-3d;
-		transform-origin: 50% 550px;
-		transform: perspective(2000px) rotateZ(360deg) translate3d(0,-450px,-2000px);
-	}
-	100% {
-		transform-style: preserve-3d;
-		transform: perspective(2000px) rotateZ(360deg) translate3d(0,0,0);
-	}
-}
 
 .spin {
 	transform-origin: 50% 1000px;
