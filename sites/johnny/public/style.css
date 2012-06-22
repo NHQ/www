@@ -1,10 +1,10 @@
 body {
-    width:450px;
+    width:100%;
 		font-size:62.5%;
 		margin: 0 auto;
-		overflow-y:auto;
 		overflow-x:hidden;
-		background-image: -webkit-radial-gradient(white 20%, green)
+		overflow-y:auto;
+		background-image: white
 }
 
 h1, h2, h3, h4, a {text-decoration:none}
@@ -14,7 +14,7 @@ h2 {font-size:2em}
 h3 {font-size:1.5em}
 h4 {font-size:1.2em}
 p {
-	font-size: 1.6em;
+	font-size: 1.6rem;
 	font-family: Georgia;
 	line-height:120%;
 }
@@ -31,29 +31,26 @@ a:hover {
 	transition-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000); 
 	transition: 1s;
 }
-.nav {
-	opacity:0;
-margin-left:11px;
-}
+
 .navi {
-	position:fixed;
-	top:-3px;
+	position:absolute;
+	top:5px;
 	height: 60px;
 	width:67px;
-	right: -73px;
+	right: 5px;
 	background-image: url(noun_project_2836.svg);
 	background-size: 40px 40px ;
 	background-repeat: no-repeat;
 	background-color:white;
 	background-position:14px 9px;
 	border:3px double black;
-	border-left:none;
 	transform-origin:center;
 	transition-timing-function: cubic-bezier(0.000, 1.650, 0.980, 1.220);
 	transition: all 300ms;
 	cursor:pointer;
 	animation-iteration-count: 1;
 	animation-fill-mode: backwards;
+	z-index:2;
 }
 
 .navi > * {
@@ -63,14 +60,16 @@ margin-left:11px;
 	opacity:0;
 }
 
-.navi:hover {
+.navi:hover, .navi:focus {
 	background-color:white;
 	background-image:none;
-	right:-256px;
+	right:5px;
 	width:250px;
-	height:380px;
+	height:350px;
+	outline:0;
+
 }
-.navi:hover > * {
+.navi:hover > *, .navi:focus > * {
 	width: 230px;
 	visibility:visible;
 	opacity: 1;
@@ -89,60 +88,53 @@ margin-left:11px;
 	transition: 500ms;
 	transform: perspective(2000px) rotateY(0deg) translate3d(0px, 0px, 0px);
 }
+
+.nav {
+	margin-left:11px;
+}
+
 .nav li {
 		padding-bottom:1ex;
-		border-bottom: 3px dotted black;
+		border-bottom: 1px dotted black;
 		margin: 2ex 0;
     width:100%;
     display:block;
 }
 
-.profile, .profile > div {
-    margin: 0 auto;
-    width: 450px;
- 		transform-style: preserve-3d;
-		transform-origin: 50% 1000px;
-		perspective: 2000px;
-		z-index:-1;
-		position:absolute;
+.nav li:nth-last-child(1) {
+	border: none;
 }
 
 .profile {
-	min-height:100%;
+    margin: 0 auto;
+ 		transform-style: preserve-3d;
+		transform-origin: 50% 1000px;
+		perspective: 2000px;
+		z-index:-1;	
 }
 
 .profile > div {
-	height:1500px;
-}
-
-
-.spin {
+	position:absolute;
 	transform-origin: 50% 1000px;
-	animation-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000);  
-	animation: spin 3s;
-	animation-iteration-count: 1;
-	animation-fill-mode: forwards
-}
-
-@keyframes spin {
-	from {
-		transform: scale(1) rotateZ(0) perspective(2000px);
-	}
-	to {
-		transform: scale(.8) rotateZ(360deg) perspective(2000px);
-	}
+	perspective: 2000px;
+	width:100%;
 }
 
 .slide {
 	position: absolute;
-	margin:0 0 30px 0;
-	top: 21px;
+	margin:0 0;
+	top: 0;
 	z-index:1;
 }
 
-.slide > p {
- padding: 1ex 2ex;
-font-size: 1.6rem;	
+.content {
+	position:relative;
+	margin: 31px auto 0;
+	min-width:320px;
+	max-width:650px;
+ 	padding:0 11px;
+	height:1500px;
+	border:3px solid black;
 }
 
 .tech, .ilist {
