@@ -5,8 +5,18 @@ var connect = require('connect')
 ,		parseURL = require('url').parse
 ,		path = require('path')
 ,		compile = require('jade.compiler')(__dirname)
-,		style = require('stylus')
+,		styles = require('stylus')
 ;	
+
+var css = fs.readFileSync(__dirname + '/public/wildstyle.styl', 'utf8');
+
+styles(css)
+	.render(function(err, css){
+  	if (err) throw err;
+		else 
+		fs.writeFileSync(__dirname + '/public/wildstyle.css', css, 'utf8')
+	});
+
 
 var Static = connect.static(__dirname + '/public');
 
