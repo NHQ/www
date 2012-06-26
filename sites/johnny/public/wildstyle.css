@@ -26,7 +26,7 @@ display:none;
 }
 .profile:nth-child(1) {
   transform-style: preserve-3d;
-  transform: translate3d(0,0,0) perspective(2000px) rotateZ(0deg);
+  transform: translate3d(0,0,1000px) perspective(2000px) rotateZ(0deg);
 }
 .profile > .slide:nth-child(2) {
   transform-style: preserve-3d;

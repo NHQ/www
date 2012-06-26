@@ -1,98 +1,100 @@
 body {
-    width:100%;
+		position:relative;
+    width:650px;
 		font-size:62.5%;
 		margin: 0 auto;
 		overflow-x:hidden;
 		overflow-y:auto;
-		background-image: white
+		background-image: white;
+		font-family: 'Electrolize', sans-serif;
+		
 }
 
-h1, h2, h3, h4, a {text-decoration:none}
+h1, h2, h3, h4, a {text-decoration:none;font-style:italic;text-align:left}
 
-h1 { font-size:2.5em}
-h2 {font-size:2em}
-h3 {font-size:1.5em}
-h4 {font-size:1.2em}
+h1 { font-size:2.5rem;
+}
+h2 {font-size:1.75rem;}
+h3 {font-size:1.5rem}
+h4 {font-size:1.2rem}
 p {
-	font-size: 1.6rem;
-	font-family: Georgia;
+	font-size: 1.4rem;
+	font-family: 'Electrolize', sans-serif;
 	line-height:120%;
 }
-
-li{
-	font-family: helvetica;
-	font-size: 1.5em;
-	font-weight:300;
+.gray {
+	font-style:italic;
+	color: rgba(1,100,200,.35);
+}
+.gray:hover {
+	color: rgba(1,100,200,.8);
+}
+li, li a{
+	font-family: 'IM Fell Double Pica', serif;
+	font-size: 1.2rem;
+	line-height:1.6rem;
+	font-weight:100;
 }
 a, a:visited {
 	color:blue;
 }
 a:hover {
-	transition-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000); 
-	transition: 1s;
 }
+
+.strings {
+	width:720px;
+	height:350px;
+	position:fixed;
+	
+}
+
+.multi {
+}
+
 
 .navi {
-	position:absolute;
-	top:5px;
-	height: 60px;
-	width:67px;
-	right: 5px;
-	background-image: url(noun_project_2836.svg);
-	background-size: 40px 40px ;
-	background-repeat: no-repeat;
+	float:right;
+	width:276px;
+	height:350px;
+	background-color:transparent;
 	background-color:white;
-	background-position:14px 9px;
-	border:3px double black;
+	background-position:222px 9px;
 	transform-origin:center;
-	transition-timing-function: cubic-bezier(0.000, 1.650, 0.980, 1.220);
-	transition: all 300ms;
+	transition: all 300ms cubic-bezier(0.700, 0.510, 0.095, 1.080);
 	cursor:pointer;
 	animation-iteration-count: 1;
-	animation-fill-mode: backwards;
-	z-index:9;
+	z-index:7;
 }
 
-.navi > * {
-	visibility:hidden;
-	transition-timing-function: cubic-bezier(0.000, 1.650, 0.980, 1.220);
-	transition: opacity 1s;
-	opacity:0;
+.navi > .nav li {
+	opacity:.25;
+	transition: opacity 300ms cubic-bezier(0.700, 0.510, 0.095, 1.080);
+	animation-iteration-count: 1;
 }
 
-.navi:hover, .navi:focus {
-	background-color:#fff;
-	background-image:none;
-	right:5px;
-	width:250px;
+.navi:hover {
+	height:350px;
+	width:276px;
 	height:350px;
 	outline:0;
+	background-image:none;
 }
 
-.navi:focus {
-	box-shadow: 0 0 3px blue;
-}
-.navi:hover > *, .navi:focus > * {
-	width: 230px;
-	visibility:visible;
-	opacity: 1;
+.navi:hover > .nav li, .navi:focus > .nav li {
+	opacity:1;
 }
 
 .nav:hover{
-	z-index:9;
-	transition-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000); 
-	transition: 500ms;
-	transform: perspective(2000px) rotateY(0deg) translate3d(0px, 0px, 0px);
 }
 
 .nav {
+	padding-top:2rem;
 	margin-left:11px;
 }
 
 .nav li {
 		padding-bottom:1ex;
-		border-bottom: 1px dotted black;
-		margin: 2ex 0;
+		margin: 1ex 0;
     width:100%;
     display:block;
 }
@@ -101,49 +103,47 @@ a:hover {
 	border: none;
 }
 
+.nav li.selected {
+	opacity:1;
+}
+
 .profile {
-    margin: 0 auto;
+		position:relative;
+    margin: 0;
  		transform-style: preserve-3d;
 		transform-origin: 50% 1000px;
 		perspective: 2000px;
-		z-index:-1;	
+		z-index:8;
+		max-width:444px;
 }
 
 .profile > div {
-	position:absolute;
-	transform-origin: 50% 1000px;
-	perspective: 2000px;
-	width:100%;
 }
 
 .slide {
-	position: absolute;
-	margin:0 0;
-	top: 0;
+	position: relative;
+	margin:0;
+	padding:0;
+	height:1500px;
+	z-index:8;
+  background:transparent;	
 }
 
 .slide.selected {
-	z-index:10;
 }
 
 .content {
 	position:relative;
-	margin: 31px auto 0;
 	min-width:320px;
-	max-width:650px;
- 	padding:0 11px;
-	height:1500px;
-	border:3px solid black;
+	max-width:444px;
+ 	padding:31px 11px 0 0;
 }
 
 .tech, .ilist {
-	padding:5px;
-	text-align:right;
+	text-align:left;
 }
-.front {
-}
+
 .ilist li:hover:before, .tech li:hover:before{
-	content: '→ ';
 }
 .back {
 }
@@ -164,4 +164,44 @@ textarea {
 
 .css {
 	display:none;
+}
+
+@media all and (max-width: 720px) {
+	
+	.strings {
+		width:100%;
+		height:100%;
+		clear:both;
+		position:relative;
+		display:block;
+	}
+	.profile {
+	}
+	.navi {
+		padding:0;
+		margin:0;
+		position:relative;
+		width:100%;
+		background-color:transparent;
+		background-image: url(noun_project_2836.svg);
+		background-size: 40px 40px ;
+		background-repeat: no-repeat;
+		background-position:222px 9px;
+		cursor:pointer;
+		z-index:10;
+	}
+	.nav li {
+			padding-bottom:1ex;
+			margin: 0;
+	    display:block;
+	}
+	
+	.navi:hover {
+
+	}
+
+	.navi:hover > .nav li, .navi:focus > .nav li {
+	}
+	
+	
 }
