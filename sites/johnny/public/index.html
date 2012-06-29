@@ -81,10 +81,18 @@
 <div class='profile' id='profile'>
   <div class='slide' id='greetings'>
 		<div class='content'>
-	      <h1>Greetings</h1> <br /><br /><p> I am Johnny, and I am at your service.</p></br /><p> I am a web developer, network technologist, and a hacker. I am currently available for consultation, contracting, and permanent employment--anywhere in the world!</p> 
+	      <h1>Greetings</h1> <br /><br /><p> I am Johnny, and I am at your service.</p></br /><p> I am a web developer, network technologist, application architect, and a hacker. I am currently available for consultation, contracting, and permanent employment--anywhere in the world!</p> 
 		</br />
 		<p>
-			I am qualified for many roles, on the computer and away from it. Use this document to get know me, and see where I fit on your team. Then use it contact me.
+			I am qualified for many roles, on the computer and away from it. This site is new (v0.1) as of June 29th, 2012, and is under construction. However, please don't hesitate to contact me.
+		</p>
+		<br />
+		<p>
+			<a hrel='mailto:jonathon@nationalheadquarters.org'>jonathon@nationalheadquarters.org</a>
+		</p>
+		<br />
+		<p>
+			312.532.3639
 		</p>
 		</div>
   </div>
@@ -175,7 +183,7 @@
 		</p><br />
 		<h2>Take a little R&ampR</h2><br />
 		<p>
-			What can I take off your desk?</p><br /><p>I'll do the research and write a report. On site, on the phone, or via the wifi. Need a presentation? With custom charts and graphs, using <a href='http://ricostacruz.com/jquery.transit/' target='_blank'>awesome</a>, open-source HTML <a href='http://bartaz.github.com/impress.js/#/tiny' target='_blank'>presentation</a> <a href='http://www.sequencejs.com/' target='_blank'>plugins</a>?
+			Thats Research and Reporting.</p><br /><p>I'll do the research and write a report. On site, on the phone, or via the wifi. Need a presentation? With custom charts and graphs, using <a href='http://ricostacruz.com/jquery.transit/' target='_blank'>awesome</a>, open-source HTML <a href='http://bartaz.github.com/impress.js/#/tiny' target='_blank'>presentation</a> <a href='http://www.sequencejs.com/' target='_blank'>plugins</a>?
 		</p>
 	</div>
   </div>
@@ -281,8 +289,15 @@
 
   <div class='slide' id='message'>
 	<div class='content'>
-          <h3><span class='email'>Jonathon@nationalheadquarters.org</span></h3><br />
-          <h3><span class='phone'>tel:+13105323639</span></h3>
+		<p>
+			<a hrel='mailto:jonathon@nationalheadquarters.org'>jonathon@nationalheadquarters.org</a>
+		</p>
+		<br />
+		<p>
+			312.532.3639
+		</p>
+		<br />
+		<p>Coming soon: send me a text message</p>
           <textarea>Leave me a message. I'll receive it as a text on my phone, via Twilio's API. Don't forget to leave contact information!
           </textarea>
 	</div>
@@ -290,7 +305,8 @@
 
 </div>
 <script type='text/javascript'>
-	var winx = window.innerWidth
+	var nav = document.getElementById('nav')
+	  , winx = window.innerWidth
 	  ,	winy = window.innerHeight
 	  ,	c = [winx/2, winy/2]
 	;
@@ -329,7 +345,6 @@
 	}});
 	
 	window.onscroll = function(e){
-		console.log(e);
 		var id = getParent(document.elementFromPoint(c[0], c[1]));
 		if(id) {
 		  nav2nav.forEach(function(a){
