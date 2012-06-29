@@ -5,23 +5,33 @@ body {
 		margin: 0 auto;
 		overflow-x:hidden;
 		overflow-y:auto;
-		background-image: white;
+		background-color: #000;
 		font-family: 'Electrolize', sans-serif;
-		
+}
+body > * {
+	background-color:#fff;
 }
 
 h1, h2, h3, h4, a {text-decoration:none;font-style:italic;text-align:left}
 
-h1 { font-size:2.5rem;
+h1 { 
+	width:100%;color:rgba(20,240,40,.9);
+	background-color:#000;
+	font-size:2rem;
+	line-height:2.7rem;
 }
-h2 {font-size:1.75rem;}
+h2 {padding-left:1ex;font-size:1.75rem;line-height:2rem;
+}
 h3 {font-size:1.5rem}
 h4 {font-size:1.2rem}
 p {
-	font-size: 1.4rem;
-	font-family: 'Electrolize', sans-serif;
-	line-height:120%;
+	padding:0 2ex;
+	font-size: 1.2rem;
+	font-family: 'IM Fell Double Pica', serif;
+	line-height:2rem;
+	text-indent:3ex;
 }
+
 .gray {
 	font-style:italic;
 	color: rgba(1,100,200,.35);
@@ -30,32 +40,65 @@ p {
 	color: rgba(1,100,200,.8);
 }
 li, li a{
-	font-family: 'IM Fell Double Pica', serif;
-	font-size: 1.2rem;
+	font-size: 1.1rem;
 	line-height:1.6rem;
 	font-weight:100;
 }
 a, a:visited {
-	color:blue;
+	color:rgba(20,40,240,.9);
 }
 a:hover {
 }
 
 .strings {
 	width:720px;
-	height:350px;
+	height:650px;
 	position:fixed;
-	
-}
+	border-top:10px solid #000;
 
+}
+.bar {
+	position:fixed;
+	top:0;
+	width:720px;
+	height:10px;
+	background:#000;
+	z-index:11;
+}
 .multi {
 }
 
+.bust {
+	position:absolute;
+	right:0px;
+	top:400px;
+	border:7px solid #fff;
+	width:263px;
+	overflow:hidden;
+	background:#fff;
+}
+
+.bust > img {
+	width:100%;
+	border-radius:10px;
+}
+
+.bust > .hidden {
+	display:none;
+}
+
+.bust:hover > .hidden {
+	display:block;
+}
+
+.bust:hover > .showen {
+	display:none;
+}
 
 .navi {
 	float:right;
 	width:276px;
-	height:350px;
+	height:450px;
 	background-color:transparent;
 	background-color:white;
 	background-position:222px 9px;
@@ -73,9 +116,6 @@ a:hover {
 }
 
 .navi:hover {
-	height:350px;
-	width:276px;
-	height:350px;
 	outline:0;
 	background-image:none;
 }
@@ -88,13 +128,13 @@ a:hover {
 }
 
 .nav {
-	padding-top:2rem;
+	padding-top:20px;
 	margin-left:11px;
 }
 
 .nav li {
 		padding-bottom:1ex;
-		margin: 1ex 0;
+		margin: 0;
     width:100%;
     display:block;
 }
@@ -139,17 +179,22 @@ a:hover {
  	padding:31px 11px 0 0;
 }
 
-.tech, .ilist {
+.os, .ilist {
+	margin-left:3ex;
+	padding-left:3ex;
+	border-left:1px solid #000;
 	text-align:left;
+	border-radius:9px;
 }
 
-.ilist li:hover:before, .tech li:hover:before{
+.ilist li:hover:after{
+
 }
 .back {
 }
 .os li {
-	font-size: 1.5em;
-	margin: 1ex 0;
+	font-size: 1.1rem;
+	margin: 1ex 1ex;
 }
 
 .os li p {
@@ -160,11 +205,13 @@ textarea {
     width:100%;
     height: 320px;
     font-size: 150%;
+		display:none;
 }
 
-.css {
-	display:none;
+.bluesBrothers {
+	margin:0 auto;
 }
+
 
 @media all and (max-width: 720px) {
 	
