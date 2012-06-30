@@ -13,14 +13,11 @@ var connect = require('connect')
 
 var twilioNumber = '+15104601907';
 
-console.log(client)
+var fone;
 
 client.account.getApplication(creds.app_sid, function(err, app) {
-	console.log(app);
-	app.sendSMS(twilioNumber, '3125323639', 'yodel homei', function(er,re){
-		console.log(er, re)
-	})
-
+	if(err){console.log(err)}
+	fone = app;
 });
 
 var Static = connect.static(__dirname + '/public');
@@ -60,6 +57,12 @@ var Site = function(req, res){
 	
 	var session = function(req, res){
 		
+	}
+
+	if(req.url === '/'){
+		fone.sendSMS(twilioNumber, '3125323639', req.headers.referer, function(er,re){
+			console.log(er, re)
+		})	
 	}
 	
 	Static(req, res, Routes);
