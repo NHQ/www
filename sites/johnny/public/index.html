@@ -87,12 +87,16 @@
 			I am qualified for many roles, on the computer and away from it. This site is my resume.
 		</p>
 		<br />
-		<p>
-			<a hrel='mailto:jonathon@nationalheadquarters.org'>jonathon@nationalheadquarters.org</a>
+		<p class='deets'>
+			<a href='mailto:jonathon@nationalheadquarters.org'>jonathon@nationalheadquarters.org</a>
+		</p>
+		<br />
+		<p class='deets'>
+			312.532.3639
 		</p>
 		<br />
 		<p>
-			312.532.3639
+			Updated: June 29, 2012
 		</p>
 		</div>
   </div>
@@ -143,7 +147,7 @@
 	              <li>File Systems</li>
 	              <li>Linux Admin</li>
 	              <li>Streaming</li>
-	              <li>Parsing</li>
+	              <li>Parsers</li>
 	              <li>Scraping</li>
 				  <li>OAuth</li>
 				  <li>...</li>
@@ -199,11 +203,11 @@
 	          Today, I use dozens of open source projects in every website or application, from the operating system to browser libraries and everywhere in between. 
 			</p><br />
 			<h2>Auto-Discovery</h2><br />
-			<p>For me, "professional development" means keeping track of what is going on in Open Source. I have to know!<br /><br />
+			<p>For me, "professional development" means keeping track of what is going on in Open Source. I have to know!</p><br />
 				<p>I love finding new projects, trying them, and watching them mature.
 	          I use Github keep track of dozens of open source projects, and am very resourceful and finding and assessing code new and old.
-	          </p><br />
-	        <h2>Favorite Open Source projects:</h2><br />
+	          </p><br /><br />
+	        <h2>Favorite Open Source projects:</h2><br /><br />
 	        <ul class='os'>
 	          <li>
 	            <a href='http://nodejs.org' target='_blank'>Node.js</a> - Event-oriented, non-blocking and awesome. The best way to write custom servers.
@@ -289,11 +293,11 @@
 
   <div class='slide' id='message'>
 	<div class='content'>
-		<p>
-			<a hrel='mailto:jonathon@nationalheadquarters.org'>jonathon@nationalheadquarters.org</a>
+		<p class='deets'>
+			<a href='mailto:jonathon@nationalheadquarters.org'>jonathon@nationalheadquarters.org</a>
 		</p>
 		<br />
-		<p>
+		<p class='deets'>
 			312.532.3639
 		</p>
 		<br />
@@ -309,6 +313,7 @@
 	  , winx = window.innerWidth
 	  ,	winy = window.innerHeight
 	  ,	c = [winx/2, winy/2]
+	  , ssid = undefined
 	;
 	
 	var nav2nav = (function(){
@@ -355,6 +360,21 @@
 		}
 	}
 	
+	var xhr = new XMLHttpRequest()
+	xhr.open('GET', '/session', true);
+	xhr.responseType = 'text';
+	xhr.onload = function(e){
+		if (this.status == 200) {
+			ssid = this.responseText;
+		}
+	}
+	xhr.send();
+	
+	function sendText(msg){
+		var xhr = new XMLHttpRequest()
+		xhr.open('GET', '/txt?msg' + encodeURIComponent(msg), true);
+		xhr.responseType = 'text';
+	}
 
 </script>
 </body>

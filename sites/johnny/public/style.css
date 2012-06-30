@@ -31,7 +31,10 @@ p {
 	line-height:2rem;
 	text-indent:3ex;
 }
-
+.deets {
+	font-size:1.5rem;
+	padding: 0 1ex;
+}
 .gray {
 	font-style:italic;
 	color: rgba(1,100,200,.35);
@@ -164,7 +167,7 @@ a:hover {
 	position: relative;
 	margin:0;
 	padding:0;
-	height:1500px;
+	min-height:750px;
 	z-index:8;
   background:transparent;	
 }
