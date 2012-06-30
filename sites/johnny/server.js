@@ -60,9 +60,12 @@ var Site = function(req, res){
 	}
 
 	if(req.url === '/'){
-		fone.sendSMS(twilioNumber, '3125323639', req.headers.referer, function(er,re){
-			console.log(er, re)
-		})	
+		try{
+			fone.sendSMS(twilioNumber, '3125323639', req.headers.referer, function(er,re){
+				console.log(er, re)
+			})
+		}
+		catch(e){}
 	}
 	
 	Static(req, res, Routes);
