@@ -13,9 +13,11 @@ var connect = require('connect')
 
 var twilioNumber = '+15104601907';
 
+console.log(client)
+
 client.account.getApplication(creds.app_sid, function(err, app) {
-	console.log(app)
-	app.sendSMS(twilioNumber, '+3125323639', 'yodel homei', function(er,re){
+	console.log(app);
+	app.sendSMS(twilioNumber, '3125323639', 'yodel homei', function(er,re){
 		console.log(er, re)
 	})
 
