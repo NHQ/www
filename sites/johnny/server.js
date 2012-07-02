@@ -43,9 +43,11 @@ var Site = function(req, res){
 			res.end('true');
 			var msgs = q.parse(p.query).msg.match(/.{1,160}/g);
 			msgs.forEach(function(msg){
+				console.log(msg.length);
 					try{
 						fone.sendSMS(twilioNumber, '3125323639', msg, function(er,re){
-							console.log(er, re)
+							if(er) console.log(er);
+							return
 						})
 					}
 					catch(e){}
@@ -70,7 +72,8 @@ var Site = function(req, res){
 	if(req.url === '/' && req.headers.referer){
 		try{
 			fone.sendSMS(twilioNumber, '3125323639', req.headers.referer, function(er,re){
-				console.log(er, re)
+				if(er) console.log(er);
+				return
 			})
 		}
 		catch(e){}
