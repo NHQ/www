@@ -15,7 +15,9 @@ body > * {
 h1, h2, h3, h4, a {text-decoration:none;font-style:italic;text-align:left}
 
 h1 { 
-	width:100%;color:rgba(20,240,40,.9);
+	width:100%;
+	color:green;
+	color:rgba(20,240,40,.9);
 	background-color:#000;
 	font-size:2rem;
 	line-height:2.7rem;
@@ -25,15 +27,15 @@ h2 {padding-left:1ex;font-size:1.75rem;line-height:2rem;
 h3 {font-size:1.5rem}
 h4 {font-size:1.2rem}
 p {
-	padding:0 2ex;
-	font-size: 1.2rem;
+	padding:0 2ex 0 3ex;
+	font-size: 16px;
+	font-size: 1.1rem;
 	font-family: 'IM Fell Double Pica', serif;
 	line-height:2rem;
-	text-indent:3ex;
 }
 .deets {
 	font-size:1.5rem;
-	padding: 0 1ex;
+	padding: 0 3ex;
 }
 .gray {
 	font-style:italic;
@@ -113,8 +115,13 @@ a:hover {
 }
 
 .navi > .nav li {
-	opacity:.25;
+	opacity:.5;
 	transition: opacity 300ms cubic-bezier(0.700, 0.510, 0.095, 1.080);
+	animation-iteration-count: 1;
+}
+
+.navi > .nav li > a {
+	transition: all 300ms cubic-bezier(0.700, 0.510, 0.095, 1.080);
 	animation-iteration-count: 1;
 }
 
@@ -147,7 +154,12 @@ a:hover {
 }
 
 .nav li.selected {
-	opacity:1;
+	opacity:1;	
+}
+
+.nav li.selected > a{
+	color:rgba(20,240,40,1);
+	text-shadow: 1px 1px #000;
 }
 
 .profile {
@@ -204,11 +216,25 @@ a:hover {
 	margin-left: 25%;
 }
 
-textarea {
-    width:100%;
+.textbox {
+    width:90%;
     height: 320px;
-    font-size: 150%;
-		display:none;
+    font-size: 1.8rem;
+		margin: 0 5%;
+		border:1px solid green;
+		overflow-y:auto;
+		overflow-x:hidden;
+}
+
+.textbox:focus {
+	outline: none;
+	box-shadow:0 0 9px #000;
+}
+
+button {
+	width:90%;
+  font-size: 1.8rem;
+	margin: 10px 5%;
 }
 
 .bluesBrothers {

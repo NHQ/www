@@ -81,7 +81,10 @@
 <div class='profile' id='profile'>
   <div class='slide' id='greetings'>
 		<div class='content'>
-	      <h1>Greetings</h1> <br /><br /><p> I am Johnny, and I am at your service.</p></br /><p> I am a web developer, network technologist, application architect, and a hacker. I am currently available for consultation, contracting, and permanent employment--anywhere in the world!</p> 
+	      <h1>Greetings</h1> <br /><br /><p> I am Johnny, and I am at your service.</p></br />
+	      <p> I am a web developer, network technologist, application architect, hacker, and much more.</p>
+	      <br />
+	      <p>I am currently available for consultation, contracting, and permanent employment--anywhere in the world!</p> 
 		</br />
 		<p>
 			I am qualified for many roles, on the computer and away from it. This site is my resume.
@@ -293,23 +296,23 @@
 
   <div class='slide' id='message'>
 	<div class='content'>
-		<p class='deets'>
-			<a href='mailto:jonathon@nationalheadquarters.org'>jonathon@nationalheadquarters.org</a>
+	  <h1>Send me a text</h1>
+		<br />
+		<p>
+		  Let me know you stopped by. Send a text (SMS) straight to my phone. You can contact me by <a href='/#greetings'>email</a> or <a href='/#greetings'>phone call</a> as well.
 		</p>
 		<br />
-		<p class='deets'>
-			312.532.3639
-		</p>
-		<br />
-		<p>Coming soon: send me a text message</p>
-          <textarea>Leave me a message. I'll receive it as a text on my phone, via Twilio's API. Don't forget to leave contact information!
-          </textarea>
+    <pre class='textbox' id='textbox' contentEditable>Hi Johnny,
+    </pre>
+    <button type=submit id='sendtxt'>Send SMS</button>
 	</div>
   </div>
 
 </div>
 <script type='text/javascript'>
 	var nav = document.getElementById('nav')
+	  , send = document.getElementById('sendtxt')
+	  , textbox = document.getElementById('textbox')
 	  , winx = window.innerWidth
 	  ,	winy = window.innerHeight
 	  ,	c = [winx/2, winy/2]
@@ -370,11 +373,26 @@
 	}
 	xhr.send();
 	
-	function sendText(msg){
+	function sendText(){
+	  var msg = textbox.textContent;
 		var xhr = new XMLHttpRequest()
-		xhr.open('GET', '/txt?msg' + encodeURIComponent(msg), true);
+		xhr.open('GET', '/txt?ssid='+ssid+'&msg=' + encodeURIComponent(msg), true);
 		xhr.responseType = 'text';
-	}
+		xhr.onload = function(e){
+      console.log(this.status);
+  		if (this.status == 200) {
+  			if(this.status === 200 && this.responseText === 'true'){
+  			  alert('text sent and probably received!')
+  			}
+  			else {
+    		  alert('An error occurred, please try again');
+    		}
+  		}
+  	}
+		xhr.send();
+	};
+	
+	send.addEventListener('click', sendText, false)
 
 </script>
 </body>

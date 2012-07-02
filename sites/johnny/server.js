@@ -41,9 +41,17 @@ var Site = function(req, res){
 			res.setHeader('Content-Type', 'text/html')
 			res.writeHead('200');
 			res.end('true');
-			var msg = q.parse(p.query).msg;
+			var msgs = q.parse(p.query).msg.match(/.{1,160}/g);
+			msgs.forEach(function(msg){
+					try{
+						fone.sendSMS(twilioNumber, '3125323639', msg, function(er,re){
+							console.log(er, re)
+						})
+					}
+					catch(e){}
+			});
 		}
-		
+
 		if(req.url.match('/incoming')){
 			var data = q.parse(p.query);
 			console.log(data);
@@ -59,7 +67,7 @@ var Site = function(req, res){
 		
 	}
 
-	if(req.url === '/'){
+	if(req.url === '/' && req.headers.referer){
 		try{
 			fone.sendSMS(twilioNumber, '3125323639', req.headers.referer, function(er,re){
 				console.log(er, re)
