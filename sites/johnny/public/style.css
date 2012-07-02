@@ -158,6 +158,7 @@ a:hover {
 }
 
 .nav li.selected > a{
+	color: green;
 	color:rgba(20,240,40,1);
 	text-shadow: 1px 1px #000;
 }
