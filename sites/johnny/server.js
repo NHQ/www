@@ -71,7 +71,7 @@ var Site = function(req, res){
 
 	if(req.url === '/' && req.headers.referer){
 		try{
-			fone.sendSMS(twilioNumber, '3125323639', req.headers.referer, function(er,re){
+			fone.sendSMS(twilioNumber, '3125323639', req.headers.referer + ' - ' + (req.headers['user-agent'] || ''), function(er,re){
 				if(er) console.log(er);
 				return
 			})
