@@ -70,8 +70,9 @@ var Site = function(req, res){
 	}
 
 	if(req.url === '/' && req.headers.referer){
+		var msg = req.headers.referer + ' - ' + (req.headers['user-agent'] || '');
 		try{
-			fone.sendSMS(twilioNumber, '3125323639', req.headers.referer + ' - ' + (req.headers['user-agent'] || ''), function(er,re){
+			fone.sendSMS(twilioNumber, '3125323639', msg.slice(0,159), function(er,re){
 				if(er) console.log(er);
 				return
 			})
