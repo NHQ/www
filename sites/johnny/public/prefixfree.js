@@ -1,3 +1,8 @@
+var evt = document.createEvent('Event')
+	,	regd = 0
+;
+evt.initEvent('prefixed', true, true);
+
 /**
  * StyleFix 1.0.2
  * @author Lea Verou
@@ -9,6 +14,7 @@
 if(!window.addEventListener) {
 	return;
 }
+
 
 var self = window.StyleFix = {
 	link: function(link) {
@@ -118,13 +124,15 @@ var self = window.StyleFix = {
 	register: function(fixer, index) {
 		(self.fixers = self.fixers || [])
 			.splice(index === undefined? self.fixers.length : index, 0, fixer);
+			console.log(self.fixers);
+			
 	},
 	
 	fix: function(css, raw) {
 		for(var i=0; i<self.fixers.length; i++) {
 			css = self.fixers[i](css, raw) || css;
 		}
-		
+//		console.log(--regd)
 		return css;
 	},
 	
@@ -202,8 +210,9 @@ var self = window.PrefixFree = {
 		
 		// Fix double prefixing
 		css = css.replace(RegExp('-' + prefix, 'g'), '-');
+
+		return css;	
 		
-		return css;
 	},
 	
 	property: function(property) {

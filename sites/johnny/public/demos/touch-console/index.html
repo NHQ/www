@@ -5,7 +5,121 @@
   <meta name="google" value="notranslate">
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <link rel="stylesheet" href="/demos/touch-console/omg.css" type="text/css">
+  <style>
+  @font-face {
+    font-family: omglyphs;
+    src: url("fonts/omglyphs/glyphs-omglyphs.ttf");
+  }
+  html, body {
+   	width: 1300px;
+  	height:905px;
+  }
+  body {
+  	transform-origin: 0 0;
+    padding: 0px;
+    background: #333;
+    overflow: hidden;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  #terminal {
+    width: 1010px;
+    height: 100%;
+    padding: 0;
+    border: 5px solid #333;
+    box-shadow: inset 0 0 8px #000;
+    background: #fff;
+    background-image: radial-gradient(50% 50%, rgba(248,249,243,0.75), rgba(93,93,93,0.60));
+    border-radius: 30px;
+    overflow: hidden;
+  	float:left;
+  }
+  #options {
+    height: 100%;
+    position: relative;
+    float:right;
+    z-index: 10;
+    border: 5px solid #333;
+    box-shadow: -3px 0 3px #333, inset 0 0 8px #000;
+    background-image: linear-gradient(left, rgba(93,93,93,0.60), rgba(223,225,216,0.60), rgba(93,93,93,0.60));
+    border-radius: 30px;
+    overflow: hidden;
+  	width:290px;
+  }
+  .icon {
+    width: 176px;
+    height: 176px;
+    border-radius: 88px;
+    background: #fff;
+    margin: 31px 50px;
+    display: block;
+    box-shadow: inset 0px 4px 6px rgba(0,0,0,0.50);
+    z-index: 2;
+  }
+  .icon:hover {
+    cursor: pointer;
+  }
+  .gloss {
+    height: 100%;
+    border-top-right-radius: 88px;
+    border-top-left-radius: 30px;
+    border-bottom-right-radius: 120px 20px;
+    border-bottom-left-radius: 100px 20px;
+    border-radius: 88px;
+    background: gradient(linear, 100% 100%, 100% 50%, from(#fff), to(rgba(255,255,255,0.00)));
+    background: -moz-linear-gradient(top, rgba(0,0,255,1), rgba(255,255,255,0));
+    box-shadow: 0px 2px 1px #fff;
+  }
+  .gloss:hover {
+    cursor: pointer;
+  }
+  .frontisIcon {
+    margin: 31px 0 0 31px;
+    padding: 0;
+    border: 7.5px solid transparent;
+    color: #008000;
+    float: left;
+  }
+  .frontisIcon:hover {
+    cursor: pointer;
+  }
+  .publish, .channel, .draftsman {
+  	  background: radial-gradient(50% 50%, rgba(248,249,243,0.75) 11%, rgba(93,93,93,0.60)), gradient(linear, 0% 0%, 0% 120%, from(#f00), to(#d21419));
+  	  background: radial-gradient(50% 50%, rgba(248,249,243,0.75) 11%, rgba(93,93,93,0.60)), linear-gradient(top, #f00, #d21419);
+  }
+  .publish:hover, .channel:hover, .draftsman:hover {
+    background: radial-gradient(50% 50%, rgba(250,253,240,0.75) 11%, rgba(178,200,89,0.60)), gradient(linear, 0% 0%, 0% 120%, from(#f00), to(#d21419));
+    background: radial-gradient(50% 50%, rgba(250,253,240,0.75) 11%, rgba(178,200,89,0.60)), linear-gradient(top, #f00, #d21419);
+    cursor: pointer;
+  }
+  .fudge {
+    margin-left: -10px;
+  }
+  .profile {
+    background: radial-gradient(50% 50%, rgba(248,249,243,0.75) 11%, rgba(93,93,93,0.60)), gradient(linear, 0% 0%, 0% 120%, from(#0f0), to(#19d214));
+    background: radial-gradient(50% 50%, rgba(248,249,243,0.75) 11%, rgba(93,93,93,0.60)), linear-gradient(top,#0f0, #19d214);
+  }
+  .profile:hover {
+    background: radial-gradient(50% 50%, rgba(250,253,240,0.75) 11%, rgba(178,200,89,0.60)), gradient(linear, 0% 0%, 0% 120%, from(#0f0), to(#19d214));
+    background: radial-gradient(50% 50%, rgba(250,253,240,0.75) 11%, rgba(178,200,89,0.60)), linear-gradient(top,#0f0,#19d214);
+    cursor: pointer;
+  }
+  [data-auth=false] {
+    background: radial-gradient(50% 50%, rgba(248,249,243,0.75) 11%, rgba(93,93,93,0.60)), gradient(linear, 0% 0%, 0% 120%, from(#0f0), to(#19d214));
+  }
+  [data-auth=false]:hover {
+    background: radial-gradient(50% 50%, rgba(250,253,240,0.75) 11%, rgba(178,200,89,0.60)), gradient(linear, 0% 0%, 0% 120%, from(#0f0), to(#19d214));
+  }
+  #showOptions {
+    position: fixed;
+    top: 30px;
+    right: 70px;
+    font-size: 50px;
+    color: #533;
+  }
+  
+  </style>
   <script type='text/javascript' src='../../prefixfree.js'></script>
   <title>OMEGA APP
   </title>
@@ -15,7 +129,7 @@
 </div>
 <div id="options">
   <div class="icon publish">
-    <div onclick="omg.playground.init()" class="hovr">
+    <div class="hovr">
       <div style="zoom:1" class="frontisIcon"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="100px" height="100px" viewBox="-3.637 -8.005 83.496 100" enable-background="new -3.637 -8.005 83.496 100"
 	 xml:space="preserve" stroke="rgba(0,0,0,1)" stroke-width="0" fill="rgba(0,0,0,1)" style="cursor:pointer">
@@ -42,7 +156,7 @@
     </div>
   </div>
   <div class="icon channel">
-    <div onclick="omg.draw()" class="hovr">
+    <div class="hovr">
       <div style="zoom:1" class="frontisIcon"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	width="100px" height="100px" viewBox="-3.637 -8.005 83.496 100" enable-background="new -3.637 -8.005 83.496 100"
 	 xml:space="preserve" stroke="rgba(0,0,0,1)" stroke-width="0" fill="rgba(0,0,0,1)" style="cursor:pointer">
@@ -74,7 +188,7 @@
     </div>
   </div>
   <div class="icon draftsman">
-    <div onclick="omg.writer.create()" class="hovr">
+    <div class="hovr">
       <div style="zoom:1" class="frontisIcon"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="100px" height="100px" viewBox="-3.637 -8.005 83.496 100" enable-background="new -3.637 -8.005 83.496 100"
  	 xml:space="preserve" stroke="rgba(0,0,0,1)" stroke-width="0" fill="rgba(0,0,0,1)" style="cursor:pointer">
@@ -89,8 +203,8 @@
       </div>
     </div>
   </div>
-  <div data-auth="false" class="icon profile">
-    <div onclick="omg.frontis()" class="hovr">
+  <div data-auth="" class="icon profile">
+    <div class="hovr">
       <div style="zoom:1" class="frontisIcon"><svg version="1.0" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="100px" height="100px" viewBox="0 0 100 76.434" enable-background="new 0 0 100 76.434" xml:space="preserve" style="cursor:pointer">
 <path d="M98.574,67.99C96.458,57.071,67.338,58.232,60.32,49.68c-1.48-1.805-1.48-1.805-0.488-8.507
@@ -116,13 +230,23 @@
   
   if(winRatio > fixedRatio){
     // scale by height
-    var scale = winY / fixedY;
-    document.body.style[PrefixFree.prefix + 'transform'] = 'scale('+scale*.9+')'
+    var scale = (winY / fixedY) * .96
+      , css = 'body {transform:scale('+scale+')}'
+      , CSS = document.createElement('style')
+    ;
+    
+    CSS.textContent = PrefixFree.prefixCSS(css);
+    document.body.appendChild(CSS);
   }
+
   if(winRatio < fixedRatio){
     // scale by width
-    var scale = winX / fixedX;
-    document.body.style[PrefixFree.prefix + 'transform'] = 'scale('+scale*.9+')'
-  }  
+    var scale = (winX / fixedX) * .96
+      , css = 'body {transform:scale('+scale+')}'
+      , CSS = document.createElement('style')
+    ;
+    CSS.textContent = PrefixFree.prefixCSS(css);
+    document.body.appendChild(CSS);
+    }  
 </script>
 </body>
