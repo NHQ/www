@@ -115,7 +115,7 @@ a:hover {
 }
 
 .navi > .nav li {
-	opacity:.5;
+	opacity:1;
 	transition: opacity 300ms cubic-bezier(0.700, 0.510, 0.095, 1.080);
 	animation-iteration-count: 1;
 }
