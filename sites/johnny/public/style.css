@@ -6,7 +6,7 @@ body {
 		overflow-x:hidden;
 		overflow-y:auto;
 		background-color: #000;
-		font-family: 'Electrolize', sans-serif;
+		font-family: 'Times New roman';
 }
 body > * {
 	background-color:#fff;
@@ -16,11 +16,11 @@ h1, h2, h3, h4, a {text-decoration:none;font-style:italic;text-align:left}
 
 h1 { 
 	width:100%;
-	color:green;
-	color:rgba(20,240,40,.9);
+	color:rgba(255,255,255,.9);
 	background-color:#000;
 	font-size:2rem;
 	line-height:2.7rem;
+        padding-left:1ex;
 }
 h2 {padding-left:1ex;font-size:1.75rem;line-height:2rem;
 }
@@ -30,7 +30,7 @@ p {
 	padding:0 2ex 0 3ex;
 	font-size: 16px;
 	font-size: 1.1rem;
-	font-family: serif;
+        font-family: 'Times New roman';
 	line-height:2rem;
 }
 .deets {
@@ -50,7 +50,7 @@ li, li a{
 	font-weight:100;
 }
 a, a:visited {
-	color:rgba(20,40,240,.9);
+	color:rgba(33,33,33,.9);
 }
 a:hover {
 }
@@ -158,11 +158,14 @@ a:hover {
 }
 
 .nav li.selected > a{
-	color: green;
-	color:rgba(20,240,40,1);
-	text-shadow: 1px 1px #000;
+
+	color:rgba(0,0,0,1);
+        text-shadow: 0 0 3px rgba(20, 30, 205, .9) 
 }
 
+.nav li.selected > a:after{
+	content : ' :^) '
+}
 .profile {
 		position:relative;
     margin: 0;
@@ -243,6 +246,9 @@ button {
 	color:#000;
 	padding: 0 1ex;
 }
+a.fact {
+    color: rgba(20, 30, 205, .8)
+    }
 
 @media all and (max-width: 720px) {
 	
