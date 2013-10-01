@@ -33,7 +33,7 @@ var Site = function(req, res){
 		if(req.url.match('/session')){
 			res.setHeader('Content-Type', 'text/html')
 			res.writeHead('200');
-			res.end(req.session.id);
+			res.end();
 			return;
 		}
 		
